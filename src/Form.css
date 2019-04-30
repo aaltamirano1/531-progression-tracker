@@ -1,0 +1,31 @@
+form{
+	background-color: white;
+	margin: 30px;
+	padding: 30px 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 300px;
+	border-radius: 3px;
+}
+
+form h1{
+	text-align: center;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+form input{
+	width: 250px;
+	border: none;
+	padding: 10px;
+	text-align: center;
+}
+
+form button{
+  border: none;
+  padding: 7px 12px;
+  border-radius: 15px;
+  width: 200px;
+  font-weight: bold;
+  background-color: #f5e51b;
+}

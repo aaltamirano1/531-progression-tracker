@@ -1,0 +1,30 @@
+*{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body{
+  background-color: #206276;/*#626161*/
+}
+
+h1{
+  font-family: 'Gugi', cursive;
+}
+
+li{
+  list-style: none;
+}
+
+ul{
+  padding: 0;
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

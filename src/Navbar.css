@@ -1,0 +1,15 @@
+.nav{
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+}
+
+ul{
+	display: flex;
+}
+
+li{
+	margin-left: 10px;
+}

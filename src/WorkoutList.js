@@ -10,7 +10,7 @@ export default class WorkoutList extends Component{
 			{name: 'deadlifts', orm: 200, notes: [], week: 1}
 		];
 
-		const workoutsHTML = workouts.map(workout=>(<Workout name={workout.name} />));
+		const workoutsHTML = workouts.map(workout=>(<Workout name={workout.name} orm={workout.orm} />));
 		return (
 			<ul className="workout-list">
 				{workoutsHTML}

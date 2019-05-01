@@ -1,28 +1,27 @@
 li.workout{
 	background-color: white;
 	border-radius: 3px;
-	padding: 15px;
+	padding: 30px 15px;
 	min-width: 200px;
 	margin: 20px;
 	border: 1px solid silver;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-li h3{
+li.workout div{
+	display: flex;
+	flex-direction: column;
+}
+
+li.workout h3{
 	font-size: 2em;
 	text-transform: capitalize;
-	text-align: center;
 	color: 	#2b2c2d;
+	margin: 0 0 -10px 0;
 }
-.buttons{
-	display: flex;
-	justify-content: flex-end;
-	border-top: 1px solid grey;
-	padding-top: 5px;
-}
-button{
-	margin-left: 7px;
-	background-color: white;
-	border-radius: 10px;
-	border: 1px solid grey;
-	width: 52px;
+
+li.workout p{
+	margin-bottom: 0;
 }

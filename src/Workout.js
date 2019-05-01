@@ -3,13 +3,17 @@ import './Workout.css';
 
 
 export default class Workout extends Component{
+	handleClick(e){
+		e.currentTarget.style.marginBottom = "-2px";
+		e.currentTarget.style.marginTop = "2px";
+	}
+
 	render(){
 		return (
-			<li className="workout">
-				<h3>{this.props.name}</h3>
-				<div className="buttons">
-					<button>Edit</button>
-					<button>Delete</button>
+			<li className="workout" onClick={this.handleClick}>
+				<div>
+					<h3>{this.props.name}</h3>
+					<p>ORM: {this.props.orm}</p>
 				</div>
 			</li>
 		);

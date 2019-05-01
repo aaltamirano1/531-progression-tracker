@@ -1,14 +1,11 @@
 *{
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body{
-  background-color: #206276;/*#626161*/
+  background-color: #edeef0;
 }
 
-h1{
-  font-family: 'Gugi', cursive;
-}
 
 li{
   list-style: none;

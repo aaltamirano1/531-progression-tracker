@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Workout from './Workout';
-
+import './WorkoutList.css';
 
 export default class WorkoutList extends Component{
 

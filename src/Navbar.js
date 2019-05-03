@@ -5,7 +5,7 @@ export default class Navbar extends Component{
 	render(){
 		return (
 			<div className="nav">
-				<h1>531 Progression Tracker</h1>
+				<img src={process.env.PUBLIC_URL + '/logo.png'} alt="Logo" />
 				<ul>
 					<li>Login</li>
 					<li>Sign Up</li>

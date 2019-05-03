@@ -1,6 +1,6 @@
 li.workout{
 	background-color: white;
-	border-radius: 3px;
+	border-radius: 3px 3px 0 0;
 	padding: 30px 15px;
 	min-width: 200px;
 	margin: 20px;
@@ -8,6 +8,14 @@ li.workout{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-bottom: 4px solid red;
+	cursor: pointer;
+	color: #f22613;
+}
+
+li.workout:hover{
+	border-bottom: 4px solid #3a539b;
+	color: #3a539b;
 }
 
 li.workout div{
@@ -24,4 +32,5 @@ li.workout h3{
 
 li.workout p{
 	margin-bottom: 0;
+	font-weight: bold;
 }

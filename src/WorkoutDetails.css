@@ -27,6 +27,11 @@
 	margin: 0;
 }
 
+.weekly-schedule tr.selected th,
+.weekly-schedule tr.selected td{
+	background-color: #3a539b;
+}
+
 .weekly-schedule th{
 	background-color: red;
 	color: white;

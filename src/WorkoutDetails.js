@@ -1,8 +1,21 @@
 import React, {Component} from 'react';
-import './WorkoutDetails.css';
 
+import $ from 'jquery';
+import './WorkoutDetails.css';
+import Notes from './Notes';
 
 export default class WorkoutDetails extends Component{
+	componentDidMount(){
+		$("tbody").on("click", "tr", function(){
+			if(!$(this).children().hasClass("table-panel")){
+				$("tr").removeClass("selected");
+				$(this).addClass("selected");
+				//save week selected to state;
+			}
+			
+		});
+
+	}
 	render(){
 		return (
 			<div className="workout-details">
@@ -17,7 +30,7 @@ export default class WorkoutDetails extends Component{
 						</div>
 						</th>
 						</tr>
-					  <tr>
+					  <tr className="selected">
 					    <th>Week 1</th>
 					    <td>3 x 99</td>
 					    <td>3 x 99</td> 
@@ -44,16 +57,7 @@ export default class WorkoutDetails extends Component{
 					</tbody>
 					</table>
 				</div>
-				<ul className="notes">
-					<li>
-						<p>Keep your should-blades back. Push up with your traps and down through the floor with you feet.</p>
-						<div className="notes-buttons">
-							<button>Edit</button>
-							<button>Move</button>
-							<button>Delete</button>
-						</div>
-					</li>
-				</ul>
+				<Notes />
 			</div>
 		);
 	}

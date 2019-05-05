@@ -8,22 +8,39 @@ const initialState = {
 
 export const reducer = (state=initialState, action) => {
     if (action.type === actions.ADD_USER) {
-         fetch(`${API_BASE_URL}/users`, {
+        fetch(`${API_BASE_URL}/users`, {
+            method: "POST",
+            body: JSON.stringify({username: action.username, password: action.password}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res=>{
+            return res.json();
+        }).then(data=>{
+            if(data.code){
+                console.log("Error: ", data.message);
+            }else{
+                console.log("Success: ", data);
+            }
+        });
+    }
+    if (action.type === actions.GET_AUTH_TOKEN) {
+        fetch(`${API_BASE_URL}/auth/login`, {
             method: "POST",
             body: JSON.stringify({username: action.username, password: action.password}),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        .then(res => {
-            console.log(res);
-            if (!res.ok) {
-                return Promise.reject(res.statusText);
-            }
-            return res.json();
+        .then(res=> res.json())
+        .then(data=>{
+            return Object.assign({}, state, {
+                authToken: data.authToken
+            });            
+            //getUserId(_user); 
         })
-        .then(resJson => {
-            console.log(resJson);
+        .catch(err=>{
+            console.error(err);
         });
     }
     else if (action.type === actions.ADD_EXERCISE) {

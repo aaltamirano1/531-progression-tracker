@@ -6,6 +6,14 @@ export const addUser = (username, password) => ({
     password
 });
 
+export const GET_AUTH_TOKEN = 'GET_AUTH_TOKEN';
+export const getAuthToken = (username, password) => ({
+    type: GET_AUTH_TOKEN,
+    username,
+    password
+});
+
+
 export const ADD_EXERCISE = 'ADD_EXERCISE';
 export const addExercise = (name, orm) => ({
     type: ADD_EXERCISE,

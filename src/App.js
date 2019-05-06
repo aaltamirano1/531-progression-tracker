@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Navbar from './Navbar';
@@ -17,6 +17,7 @@ export class App extends React.Component{
 	getAuthToken(username, password){
 		this.props.dispatch(getAuthToken(username, password));
 	}
+
 	render(){
 	  return (
 	  	<Router>
@@ -39,7 +40,7 @@ export class App extends React.Component{
 }
 
 const mapStateToProps = state => ({
-    users: state.users
+    authToken: state.authToken
 });
 
 export default connect(mapStateToProps)(App);

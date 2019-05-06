@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import './Form.css';
 
-export default class Form extends Component{
+export class Form extends Component{
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
@@ -16,9 +18,13 @@ export default class Form extends Component{
         }
         this.usernameInput.value = '';
         this.passwordInput.value = '';
+        console.log(localStorage.authToken);
     }
 
 	render(){
+        if(localStorage.authToken){
+            return <Redirect to="/workout-list"/>
+        }
 	    return (
           <div className="landing">
               <div className="landing-content">
@@ -26,10 +32,10 @@ export default class Form extends Component{
               </div>
               <form onSubmit={this.onSubmit}>
                 <h1>{this.props.title}</h1>
-                <label for="username-input">Username:</label>
+                <label htmlFor="username-input">Username:</label>
                 <input type="text" name="username" id="username-input" required ref={input => this.usernameInput = input}/>
                 <br/>
-                <label for="password-input">Password:</label>
+                <label htmlFor="password-input">Password:</label>
                 <input type="password" name="password" id="password-input" required ref={input => this.passwordInput = input}/>
                 <br/>
                 <button type="submit">Submit</button>
@@ -39,3 +45,8 @@ export default class Form extends Component{
 	}
 
 }
+const mapStateToProps = state => ({
+    authToken: state.authToken
+});
+
+export default connect(mapStateToProps)(Form);

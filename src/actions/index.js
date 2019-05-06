@@ -1,3 +1,4 @@
+const API_BASE_URL = "https://sheltered-thicket-29874.herokuapp.com";
     
 export const ADD_USER = 'ADD_USER';
 export const addUser = (username, password) => ({
@@ -6,11 +7,10 @@ export const addUser = (username, password) => ({
     password
 });
 
-export const GET_AUTH_TOKEN = 'GET_AUTH_TOKEN';
-export const getAuthToken = (username, password) => ({
-    type: GET_AUTH_TOKEN,
-    username,
-    password
+export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
+export const setAuthToken = (authToken) => ({
+    type: SET_AUTH_TOKEN,
+    authToken
 });
 
 
@@ -20,3 +20,20 @@ export const addExercise = (name, orm) => ({
     name,
     orm
 });
+
+export const getAuthToken=(username, password)=>dispatch=>{
+	fetch(`${API_BASE_URL}/auth/login`, {
+    method: "POST",
+    body: JSON.stringify({username: username, password: password}),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+	})
+	.then(res=> res.json())
+	.then(data=>{     
+	    dispatch(setAuthToken(data.authToken));
+	})
+	.catch(err=>{
+	    console.error(err);
+	});
+}

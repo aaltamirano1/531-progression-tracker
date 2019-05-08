@@ -15,7 +15,9 @@ export class WorkoutForm extends Component{
         e.preventDefault();
         const name = this.nameInput.value.trim();
         const orm = this.ormInput.value.trim();
-        if (name && orm) {
+        if (name && orm && this.props.idValue) {
+            this.props.requestHandler(this.nameInput.value, this.ormInput.value, this.props.idValue);
+        } else if (name && orm) {
             this.props.requestHandler(this.nameInput.value, this.ormInput.value);
         }
         this.nameInput.value = '';

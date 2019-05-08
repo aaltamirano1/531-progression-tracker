@@ -30,7 +30,6 @@ export const setAuthToken = (authToken) => ({
     authToken
 });
 
-
 export const ADD_EXERCISE = 'ADD_EXERCISE';
 export const addExercise = (name, orm) => ({
     type: ADD_EXERCISE,
@@ -62,6 +61,25 @@ export const postExercise = (name, orm) => dispatch =>{
 		console.log(err);
 	});
 }
+
+export const putExercise = (name, orm, id) => dispatch =>{
+	fetch(`${API_BASE_URL}/exercises/${id}`, {
+		method: "PUT",
+		body: JSON.stringify({name, orm}),
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer '+localStorage.authToken
+		}
+	})
+	.then(res=>res.json())
+	.then(data=>{
+		console.log('Entry updated.', data);
+	})
+	.catch(err=>{
+		console.error(err);
+	});
+}
+
 
 export const getAuthToken = (username, password) => dispatch =>{
 	fetch(`${API_BASE_URL}/auth/login`, {

@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import './WorkoutDetails.css';
 import SubNavbar from './SubNavbar';
 import WeeklySchedule from './WeeklySchedule';
 import WorkoutForm from '../WorkoutList/WorkoutForm';
 import Notes from './Notes';
-
-import {Redirect} from 'react-router-dom';
-import {connect} from 'react-redux';
+import {putExercise} from '../../actions';
 
 export class WorkoutDetails extends Component{
+	updateExercise(name, orm, id){
+		this.props.dispatch(putExercise(name, orm, id));
+	}
 	render(){
 		if(!this.props.workout){
 			return <Redirect to="/workout-list" />;
@@ -25,6 +28,7 @@ export class WorkoutDetails extends Component{
 					nameValue={this.props.workout.name} 
 					ormValue={this.props.workout.orm}
 					idValue={this.props.workout._id}
+					requestHandler={(name, orm, id) => this.updateExercise(name, orm, id)}
 				/>
 			</div>
 		);

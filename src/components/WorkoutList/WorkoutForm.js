@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 import $ from 'jquery';
-import './NewWorkout.css';
-import {postExercise} from '../../actions';
+import './WorkoutForm.css';
 
-export class NewWorkout extends Component{
+export class WorkoutForm extends Component{
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
@@ -18,21 +16,27 @@ export class NewWorkout extends Component{
         const name = this.nameInput.value.trim();
         const orm = this.ormInput.value.trim();
         if (name && orm) {
-            this.props.dispatch(postExercise(this.nameInput.value, this.ormInput.value));
+            this.props.requestHandler(this.nameInput.value, this.ormInput.value);
         }
         this.nameInput.value = '';
         this.ormInput.value = '';
-        console.log(this.props.exercises);
         this.closeForm();
+    }
+    componentDidMount(){
+        if(this.props.ormValue && this.props.nameValue){
+            this.nameInput.value = this.props.nameValue;
+            this.ormInput.value = this.props.ormValue;
+        }
+        console.log(this.props.idValue);
     }
 
 	render(){
 	    return (
           <div className="modal-background">  
               <div className="modal">
-                  <form className="new-workout" onSubmit={this.onSubmit}>
+                  <form className="workout-form" onSubmit={this.onSubmit}>
                     <p className="close-form" onClick={()=>this.closeForm()}><i className="fas fa-times"></i></p>
-                    <h1>New Workout</h1>
+                    <h1>{this.props.title}</h1>
                     <p className="error">{this.props.formErrors}</p>
                     <label htmlFor="name-input">Name:</label>
                     <input type="text" name="name" id="name-input" required ref={input => this.nameInput = input}/>
@@ -53,4 +57,4 @@ const mapStateToProps = state => ({
     exercises: state.exercises
 });
 
-export default connect(mapStateToProps)(NewWorkout);
+export default connect(mapStateToProps)(WorkoutForm);

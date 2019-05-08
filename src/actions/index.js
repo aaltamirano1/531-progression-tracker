@@ -38,12 +38,6 @@ export const addExercise = (name, orm) => ({
     orm
 });
 
-export const SET_EXERCISE_WEEK = 'SET_EXERCISE_WEEK';
-export const setExerciseWeek = (week) => ({
-    type: SET_EXERCISE_WEEK,
-    week
-});
-
 export const postExercise = (name, orm) => dispatch =>{
 	fetch(`${API_BASE_URL}/exercises`, {
 		method: "POST",
@@ -61,7 +55,7 @@ export const postExercise = (name, orm) => dispatch =>{
 	})
 	.then(data=>{
 		console.log(data);
-		dispatch(setExerciseWeek(name, orm));
+		dispatch(addExercise(name, orm));
 		// close modal, re-render workout-list
 	})
 	.catch(err=>{

@@ -4,6 +4,7 @@ import $ from 'jquery';
 import './WorkoutDetails.css';
 import SubNavbar from './SubNavbar';
 import WeeklySchedule from './WeeklySchedule';
+import WorkoutForm from '../WorkoutList/WorkoutForm';
 import Notes from './Notes';
 
 import {Redirect} from 'react-router-dom';
@@ -20,6 +21,11 @@ export class WorkoutDetails extends Component{
 				<h1>{this.props.workout.name}</h1>
 				<WeeklySchedule orm={this.props.workout.orm} week={this.props.workout.week}/>
 				<Notes />
+				<WorkoutForm title="Edit Exercise" 
+					nameValue={this.props.workout.name} 
+					ormValue={this.props.workout.orm}
+					idValue={this.props.workout._id}
+				/>
 			</div>
 		);
 	}

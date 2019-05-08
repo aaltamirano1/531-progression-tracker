@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import Workout from './Workout';
-import NewWorkout from './NewWorkout';
+import WorkoutForm from './WorkoutForm';
 import $ from 'jquery';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './WorkoutList.css';
-import {setSelectedWorkout} from '../../actions';
+import {setSelectedWorkout, postExercise} from '../../actions';
 
 export class WorkoutList extends Component{
 	newExercise(){
 		$(".modal-background").show();
+	}
+	addExercise(name, orm){
+		this.props.dispatch(postExercise(name, orm));
 	}
 	selectWorkout(workout){
 		this.props.dispatch(setSelectedWorkout(workout));
@@ -28,7 +31,7 @@ export class WorkoutList extends Component{
 			
 		return (
 			<ul className="workout-list">
-				<li><NewWorkout /></li>
+				<li><WorkoutForm title="New Workout" requestHandler={(name, orm) => this.addExercise(name, orm)}/></li>
 				{workoutsHTML}
 				<li><button className="new-exercise" onClick={()=>this.newExercise()}>+</button></li>
 			</ul>

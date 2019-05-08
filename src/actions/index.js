@@ -1,11 +1,28 @@
 const API_BASE_URL = "https://sheltered-thicket-29874.herokuapp.com";
-    
-export const ADD_USER = 'ADD_USER';
-export const addUser = (username, password) => ({
-    type: ADD_USER,
-    username,
-    password
-});
+
+export const registerUser = (username, password) => dispatch =>{
+  fetch(`${API_BASE_URL}/users`, {
+      method: "POST",
+      body: JSON.stringify({username: username, password: password}),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  }).then(res=>{
+      return res.json();
+  }).then(data=>{
+      if(data.code){
+          dispatch(setFormErrors(`Problem with ${data.location}. ${data.message}.`));
+      }else{
+          console.log("Success: ", data);
+      }
+  });
+}
+
+export const SET_FORM_ERRORS = 'SET_FORM_ERRORS';
+export const setFormErrors = (formErrors) => ({
+    type: SET_FORM_ERRORS,
+    formErrors
+})
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = (authToken) => ({
@@ -21,7 +38,38 @@ export const addExercise = (name, orm) => ({
     orm
 });
 
-export const getAuthToken=(username, password)=>dispatch=>{
+export const SET_EXERCISE_WEEK = 'SET_EXERCISE_WEEK';
+export const setExerciseWeek = (week) => ({
+    type: SET_EXERCISE_WEEK,
+    week
+});
+
+export const postExercise = (name, orm) => dispatch =>{
+	fetch(`${API_BASE_URL}/exercises`, {
+		method: "POST",
+		body: JSON.stringify({name, orm}),
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer '+localStorage.authToken
+		}
+	})
+	.then(res=> {
+		if(res.ok){
+			return res.json;
+		}
+		throw new Error(res.statusText);
+	})
+	.then(data=>{
+		console.log(data);
+		dispatch(setExerciseWeek(name, orm));
+		// close modal, re-render workout-list
+	})
+	.catch(err=>{
+		console.log(err);
+	});
+}
+
+export const getAuthToken = (username, password) => dispatch =>{
 	fetch(`${API_BASE_URL}/auth/login`, {
     method: "POST",
     body: JSON.stringify({username: username, password: password}),
@@ -37,3 +85,56 @@ export const getAuthToken=(username, password)=>dispatch=>{
 	    console.error(err);
 	});
 }
+
+export const SET_USER_ID = 'SET_USER_ID';
+export const setUserId = (userId) => ({
+    type: SET_USER_ID,
+    userId
+});
+
+export const getUserId = username => dispatch =>{
+	fetch(`${API_BASE_URL}/users/id/${username}`)
+	.then(res=>{
+		if (res.ok) {
+      return res.json();
+    }
+    throw new Error(res.statusText);
+	})
+	.then(userId=>{
+		dispatch(setUserId(userId));
+		dispatch(getExercises(userId));
+	}).catch(err=>{
+		console.error(err);
+	});
+}
+
+export const getExercises = userId => dispatch =>{
+	fetch(`${API_BASE_URL}/exercises/by-user/${userId}`, {
+		headers: {
+			"Authorization": "Bearer "+localStorage.authToken
+		}
+	})
+	.then(res=>{
+    if (res.ok) {
+      return res.json();
+    }
+    throw new Error(res.statusText);
+	}).then(resJson=>{
+		dispatch(setExercises(resJson));
+	}).catch(err=>{
+		console.error(err);
+	});
+
+}
+
+export const SET_EXERCISES = 'SET_EXERCISES';
+export const setExercises = exercises => ({
+    type: SET_EXERCISES,
+    exercises
+});
+
+export const SET_SELECTED_WORKOUT = 'SET_SELECTED_WORKOUT';
+export const setSelectedWorkout = selectedWorkout => ({
+    type: SET_SELECTED_WORKOUT,
+   	selectedWorkout
+});

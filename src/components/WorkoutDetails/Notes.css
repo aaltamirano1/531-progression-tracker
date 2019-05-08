@@ -1,0 +1,22 @@
+.notes-section h3{
+	margin: 80px 0 -5px 0;
+}
+
+.notes li{
+	background-color: white;
+	border: 1px solid silver;
+	border-radius: 3px;
+	padding: 20px;
+	margin: 20px 0;
+	color: #2b2c2d;
+	font-weight: bold;
+}
+
+.notes li .notes-buttons{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.notes li button{
+	margin: 3px;
+}

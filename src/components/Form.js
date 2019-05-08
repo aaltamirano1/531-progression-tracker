@@ -18,12 +18,11 @@ export class Form extends Component{
         }
         this.usernameInput.value = '';
         this.passwordInput.value = '';
-        console.log(localStorage.authToken);
     }
 
 	render(){
         if(localStorage.authToken){
-            return <Redirect to="/workout-list"/>
+            return <Redirect to="/workout-list"/>;
         }
 	    return (
           <div className="landing">
@@ -32,6 +31,7 @@ export class Form extends Component{
               </div>
               <form onSubmit={this.onSubmit}>
                 <h1>{this.props.title}</h1>
+                <p className="error">{this.props.formErrors}</p>
                 <label htmlFor="username-input">Username:</label>
                 <input type="text" name="username" id="username-input" required ref={input => this.usernameInput = input}/>
                 <br/>
@@ -46,7 +46,8 @@ export class Form extends Component{
 
 }
 const mapStateToProps = state => ({
-    authToken: state.authToken
+    authToken: state.authToken,
+    formErrors: state.formErrors
 });
 
 export default connect(mapStateToProps)(Form);

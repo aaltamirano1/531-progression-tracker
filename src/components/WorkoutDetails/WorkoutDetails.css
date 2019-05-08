@@ -1,0 +1,10 @@
+.workout-details{
+	margin-top: 150px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.workout-details h1{
+	text-transform: capitalize;
+}

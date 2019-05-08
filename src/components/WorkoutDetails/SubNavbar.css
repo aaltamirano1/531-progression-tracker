@@ -1,0 +1,26 @@
+.workout-details-nav{
+  position: fixed;
+  top: 107px;
+  width: 100vw;
+  background-color: white;
+  border-bottom: 1px solid silver;
+}
+
+.workout-details-nav ul{
+	display: flex;
+	justify-content: flex-end;
+	margin: 0;
+	padding-right: 20px;
+}
+
+.workout-details-nav li{
+	margin: 10px;
+	cursor: pointer;
+	color: white;
+	background-color: #f22613;
+	font-weight: bold;
+	padding: 7px 14px;
+	border-radius: 25px;
+	text-transform: uppercase;
+	font-size: .9em;
+}

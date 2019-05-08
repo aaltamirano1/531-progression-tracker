@@ -1,70 +1,40 @@
 import * as actions from '../actions';
 
-const API_BASE_URL = "https://sheltered-thicket-29874.herokuapp.com";
-
 const initialState = {
-    authToken: "",
-    userId: ""
+    formErrors: "",
+    userId: "",
+    exercises: [{name: "squats", orm: 145, week: 1}, {name: "deadlifts", orm: 185, week: 2}]
 };
 
-function getUserId(username){
-    fetch(`${API_BASE_URL}/users/id/${username}`)
-    .then(res=>{
-        if (res.ok) {
-      return res.json();
-    }
-    throw new Error(res.statusText);
-    })
-    .then(user_id=>{
-        localStorage.user_id = user_id;
-        return user_id;
-    }).catch(err=>{
-        console.error(err);
-    });
-}
-
 export const reducer = (state=initialState, action) => {
-    if (action.type === actions.ADD_USER) {
-        fetch(`${API_BASE_URL}/users`, {
-            method: "POST",
-            body: JSON.stringify({username: action.username, password: action.password}),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res=>{
-            return res.json();
-        }).then(data=>{
-            if(data.code){
-                console.log("Problem with",data.location, "- ", data.message);
-            }else{
-                console.log("Success: ", data);
-            }
+    if (action.type === actions.SET_USER_ID) {
+        localStorage.userId = action.userId;
+        return Object.assign({}, state, {
+            userId: action.userId
         });
-    }
-    if (action.type === actions.SET_AUTH_TOKEN) {
-        console.log("Set auth token fired.");
+    } else if (action.type === actions.SET_EXERCISES) {
+        return Object.assign({}, state, {
+            exercises: action.exercises
+        });
+    }else if (action.type === actions.SET_SELECTED_WORKOUT) {
+        return Object.assign({}, state, {
+            selectedWorkout: action.selectedWorkout
+        });
+    } else if (action.type === actions.SET_AUTH_TOKEN) {
         localStorage.authToken = action.authToken;
         return Object.assign({}, state, {
             authToken: action.authToken
         });
-    }
-    else if (action.type === actions.ADD_EXERCISE) {
-        let users = state.users.map((user, index) => {
-            if (index !== action.userIndex) {
-                return user;
-            }
-            console.log('Added exercise: ', action.name, ". ORM: ", action.orm);
-            return Object.assign({}, user, {
-                exercises: [...user.exercises, {
-                    name: action.name,
-                    orm: action.orm
-                }]
-            });
-        });
-
+    } else if (action.type === actions.SET_FORM_ERRORS){
         return Object.assign({}, state, {
-            users: users
+            formErrors: action.formErrors
         });
+    } else if (action.type === actions.ADD_EXERCISE) {
+        return Object.assign({}, state, {
+            exercises: [...state.exercises, {name: action.name, orm: action.orm, week: 1}]
+        });
+    } else if (action.type === actions.SET_EXERCISE_WEEK) {
+        
     }
     return state;
 };

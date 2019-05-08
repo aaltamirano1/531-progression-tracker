@@ -4,18 +4,19 @@ import {connect} from 'react-redux';
 
 import Navbar from './Navbar';
 import Form from './Form';
-import WorkoutList from './WorkoutList';
-import WorkoutDetails from './WorkoutDetails';
+import WorkoutList from './WorkoutList/WorkoutList';
+import WorkoutDetails from './WorkoutDetails/WorkoutDetails';
 
 import './App.css';
-import {addUser, getAuthToken} from './actions';
+import {registerUser, getAuthToken, getUserId} from '../actions';
 
 export class App extends React.Component{
 	addUser(username, password){
-		this.props.dispatch(addUser(username, password));
+		this.props.dispatch(registerUser(username, password));
 	}
 	getAuthToken(username, password){
 		this.props.dispatch(getAuthToken(username, password));
+		this.props.dispatch(getUserId(username));
 	}
 
 	render(){
@@ -32,7 +33,7 @@ export class App extends React.Component{
 		      	onAdd={(username, password) => this.getAuthToken(username, password)}
 		      />)} />
 		      <Route exact path="/workout-list" component={WorkoutList} />
-		      <Route exact path="/workout-list/1" component={WorkoutDetails} />
+		      <Route exact path="/workout-details" component={WorkoutDetails} />
 		    </div>
 	    </Router>
 	  );

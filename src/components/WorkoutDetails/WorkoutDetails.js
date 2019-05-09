@@ -20,11 +20,9 @@ export class WorkoutDetails extends Component{
 		}else if(!this.props.selected){
 			return <Redirect to="/workout-list" />;
 		}
-
 		const workout = this.props.exercises.filter(exercise=>{
 			return exercise._id === this.props.selected;
 		})[0];
-
 		return (
 			<div className="workout-details">
 				<SubNavbar />

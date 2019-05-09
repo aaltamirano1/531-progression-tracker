@@ -4,7 +4,7 @@ const initialState = {
     authToken: localStorage.authToken,
     formErrors: "",
     userId: "",
-    exercises: [{name: "squats", orm: 145, week: 1}, {name: "deadlifts", orm: 185, week: 2}]
+    units: "lbs."
 };
 
 export const reducer = (state=initialState, action) => {
@@ -13,6 +13,7 @@ export const reducer = (state=initialState, action) => {
             formErrors: action.formErrors
         });
     } else if (action.type === actions.SET_AUTH_TOKEN) {
+        localStorage.authToken = action.authToken;
         return Object.assign({}, state, {
             authToken: action.authToken
         });
@@ -20,6 +21,10 @@ export const reducer = (state=initialState, action) => {
         localStorage.userId = action.userId;
         return Object.assign({}, state, {
             userId: action.userId
+        });
+    }else if (action.type === actions.SET_UNITS) {
+        return Object.assign({}, state, {
+            units: action.units
         });
     } else if (action.type === actions.SET_EXERCISES) {
         return Object.assign({}, state, {

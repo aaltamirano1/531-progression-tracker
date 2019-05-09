@@ -19,11 +19,14 @@ export class SubNavbar extends Component{
 						<li onClick={()=>this.clearSelectedExercise()}>All Workouts</li>
 						<li onClick={()=>this.editExercise()}>Edit</li>
 						<li>Delete</li>
-						<li>Unit: lbs.</li>
+						<li>Unit: {this.props.units}</li>
 						</ul>
 				</nav>
 		);
 	}
 }
+const mapStateToProps = state => ({
+    units: state.units
+});
 
-export default connect()(SubNavbar)
+export default connect(mapStateToProps)(SubNavbar)

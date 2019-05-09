@@ -11,9 +11,9 @@ export const registerUser = (username, password) => dispatch =>{
       return res.json();
   }).then(data=>{
       if(data.code){
-          dispatch(setFormErrors(`Problem with ${data.location}. ${data.message}.`));
+        dispatch(setFormErrors(`Problem with ${data.location}. ${data.message}.`));
       }else{
-          console.log("Success: ", data);
+        dispatch(setAuthToken(username, password));
       }
   });
 }
@@ -48,25 +48,32 @@ export const setAuthToken = (authToken) => ({
 });
 
 export const getUserId = username => dispatch =>{
-	fetch(`${API_BASE_URL}/users/id/${username}`)
+	fetch(`${API_BASE_URL}/users/id-and-units/${username}`)
 	.then(res=>{
 		if (res.ok) {
       return res.json();
     }
     throw new Error(res.statusText);
 	})
-	.then(userId=>{
-		dispatch(setUserId(userId));
-		dispatch(getExercises(userId));
+	.then(user=>{
+		dispatch(setUserId(user.id));
+		dispatch(getExercises(user.id));
+		dispatch(setUnits(user.units));
 	}).catch(err=>{
 		console.error(err);
 	});
 }
 
 export const SET_USER_ID = 'SET_USER_ID';
-export const setUserId = (userId) => ({
+export const setUserId = userId => ({
     type: SET_USER_ID,
     userId
+});
+
+export const SET_UNITS = 'SET_UNITS';
+export const setUnits = units => ({
+    type: SET_UNITS,
+    units
 });
 
 export const getExercises = userId => dispatch =>{
@@ -110,9 +117,7 @@ export const postExercise = (name, orm) => dispatch =>{
 		throw new Error(res.statusText);
 	})
 	.then(data=>{
-		console.log(data);
-		dispatch(addExercise(name, orm));
-		// close modal, re-render workout-list
+		dispatch(getExercises(localStorage.userId));
 	})
 	.catch(err=>{
 		console.log(err);

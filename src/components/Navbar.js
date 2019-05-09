@@ -5,8 +5,7 @@ import {connect} from 'react-redux';
 import './Navbar.css';
 
 export class Navbar extends Component{
-	setAuthToken(token){
-		
+	setAuthToken(token){		
 		this.props.dispatch(setAuthToken(token));
 	}
 	render(){

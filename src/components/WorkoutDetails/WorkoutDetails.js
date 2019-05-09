@@ -17,20 +17,24 @@ export class WorkoutDetails extends Component{
 	render(){
 		if(!this.props.authToken){
 			return <Redirect to="/" />;
-		}else if(!this.props.workout){
+		}else if(!this.props.selected){
 			return <Redirect to="/workout-list" />;
 		}
-		console.log(this.props.authToken);
+
+		const workout = this.props.exercises.filter(exercise=>{
+			return exercise._id === this.props.selected;
+		})[0];
+
 		return (
 			<div className="workout-details">
 				<SubNavbar />
-				<h1>{this.props.workout.name}</h1>
-				<WeeklySchedule orm={this.props.workout.orm} week={this.props.workout.week}/>
+				<h1>{workout.name}</h1>
+				<WeeklySchedule orm={workout.orm} week={workout.week}/>
 				<Notes />
 				<WorkoutForm title="Edit Exercise" 
-					nameValue={this.props.workout.name} 
-					ormValue={this.props.workout.orm}
-					idValue={this.props.workout._id}
+					nameValue={workout.name} 
+					ormValue={workout.orm}
+					idValue={workout._id}
 					requestHandler={(name, orm, id) => this.updateExercise(name, orm, id)}
 				/>
 			</div>
@@ -40,8 +44,9 @@ export class WorkoutDetails extends Component{
 }
 
 const mapStateToProps = state => ({
-    workout: state.selectedWorkout,
-    authToken: state.authToken
+    authToken: state.authToken,
+    exercises: state.exercises,
+    selected: state.selectedExercise
 });
 
 export default connect(mapStateToProps)(WorkoutDetails);

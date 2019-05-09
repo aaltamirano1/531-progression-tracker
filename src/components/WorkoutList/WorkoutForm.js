@@ -20,8 +20,6 @@ export class WorkoutForm extends Component{
         } else if (name && orm) {
             this.props.requestHandler(this.nameInput.value, this.ormInput.value);
         }
-        this.nameInput.value = '';
-        this.ormInput.value = '';
         this.closeForm();
     }
     componentDidMount(){

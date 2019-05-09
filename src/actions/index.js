@@ -137,15 +137,23 @@ export const putExercise = (name, orm, id) => dispatch =>{
 	})
 	.then(res=>res.json())
 	.then(data=>{
-		console.log('Entry updated.', data);
+		dispatch(updateExercise(name, orm, id));
 	})
 	.catch(err=>{
 		console.error(err);
 	});
 }
 
-export const SET_SELECTED_WORKOUT = 'SET_SELECTED_WORKOUT';
-export const setSelectedWorkout = selectedWorkout => ({
-    type: SET_SELECTED_WORKOUT,
-   	selectedWorkout
+export const UPDATE_EXERCISE = 'UPDATE_EXERCISE';
+export const updateExercise = (name, orm, id) => ({
+    type: UPDATE_EXERCISE,
+    name,
+    orm,
+    id
+});
+
+export const SET_SELECTED_EXERCISE = 'SET_SELECTED_EXERCISE';
+export const setSelectedExercise = id => ({
+    type: SET_SELECTED_EXERCISE,
+   	id
 });

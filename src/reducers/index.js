@@ -17,13 +17,12 @@ export const reducer = (state=initialState, action) => {
         return Object.assign({}, state, {
             exercises: action.exercises
         });
-    }else if (action.type === actions.SET_SELECTED_WORKOUT) {
+    }else if (action.type === actions.SET_SELECTED_EXERCISE) {
+        console.log(action.id);
         return Object.assign({}, state, {
-            selectedWorkout: action.selectedWorkout
+            selectedExercise: action.id
         });
     } else if (action.type === actions.SET_AUTH_TOKEN) {
-        localStorage.authToken = action.authToken;
-        console.log(action);
         return Object.assign({}, state, {
             authToken: action.authToken
         });
@@ -34,6 +33,14 @@ export const reducer = (state=initialState, action) => {
     } else if (action.type === actions.ADD_EXERCISE) {
         return Object.assign({}, state, {
             exercises: [...state.exercises, {name: action.name, orm: action.orm, week: 1}]
+        });
+    } else if (action.type === actions.UPDATE_EXERCISE){
+        const exercises = state.exercises.map(exercise => exercise._id === action.id ?
+            { ...exercise, name: action.name, orm: action.orm } : 
+            exercise
+        );
+        return Object.assign({}, state, {
+            exercises 
         });
     }
     return state;

@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import {connect} from 'react-redux';
 
-import{setSelectedWorkout} from '../../actions';
+import{setSelectedExercise} from '../../actions';
 import './SubNavbar.css';
 
 export class SubNavbar extends Component{
-	clearSelectedWorkout(){
-		this.props.dispatch(setSelectedWorkout(""));
+	clearSelectedExercise(){
+		this.props.dispatch(setSelectedExercise(""));
 	}
 	editExercise(){
 		$(".modal-background").show();
@@ -16,7 +16,7 @@ export class SubNavbar extends Component{
 		return (
 				<nav className="workout-details-nav">
 					<ul>
-						<li onClick={()=>this.clearSelectedWorkout()}>All Workouts</li>
+						<li onClick={()=>this.clearSelectedExercise()}>All Workouts</li>
 						<li onClick={()=>this.editExercise()}>Edit</li>
 						<li>Delete</li>
 						<li>Unit: lbs.</li>

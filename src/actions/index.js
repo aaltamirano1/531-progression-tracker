@@ -33,11 +33,11 @@ export const getAuthToken = (username, password) => dispatch =>{
     }
 	})
 	.then(res=> res.json())
-	.then(data=>{     
-	    dispatch(setAuthToken(data.authToken));
+	.then(data=>{  
+		dispatch(setAuthToken(data.authToken));
 	})
 	.catch(err=>{
-	    console.error(err);
+	  dispatch(setFormErrors(`Incorrect username or password.`));
 	});
 }
 

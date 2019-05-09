@@ -8,7 +8,15 @@ const initialState = {
 };
 
 export const reducer = (state=initialState, action) => {
-    if (action.type === actions.SET_USER_ID) {
+    if (action.type === actions.SET_FORM_ERRORS){
+        return Object.assign({}, state, {
+            formErrors: action.formErrors
+        });
+    } else if (action.type === actions.SET_AUTH_TOKEN) {
+        return Object.assign({}, state, {
+            authToken: action.authToken
+        });
+    } else if (action.type === actions.SET_USER_ID) {
         localStorage.userId = action.userId;
         return Object.assign({}, state, {
             userId: action.userId
@@ -16,19 +24,6 @@ export const reducer = (state=initialState, action) => {
     } else if (action.type === actions.SET_EXERCISES) {
         return Object.assign({}, state, {
             exercises: action.exercises
-        });
-    }else if (action.type === actions.SET_SELECTED_EXERCISE) {
-        console.log(action.id);
-        return Object.assign({}, state, {
-            selectedExercise: action.id
-        });
-    } else if (action.type === actions.SET_AUTH_TOKEN) {
-        return Object.assign({}, state, {
-            authToken: action.authToken
-        });
-    } else if (action.type === actions.SET_FORM_ERRORS){
-        return Object.assign({}, state, {
-            formErrors: action.formErrors
         });
     } else if (action.type === actions.ADD_EXERCISE) {
         return Object.assign({}, state, {
@@ -42,6 +37,11 @@ export const reducer = (state=initialState, action) => {
         return Object.assign({}, state, {
             exercises 
         });
-    }
+    } else if (action.type === actions.SET_SELECTED_EXERCISE) {
+        console.log(action.id);
+        return Object.assign({}, state, {
+            selectedExercise: action.id
+        });
+    } 
     return state;
 };

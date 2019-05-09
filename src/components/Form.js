@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import './Form.css';
+import {setFormErrors} from '../actions';
 
 export class Form extends Component{
     constructor(props) {
@@ -18,6 +19,10 @@ export class Form extends Component{
         }
         this.usernameInput.value = '';
         this.passwordInput.value = '';
+    }
+
+    componentDidMount(){
+        this.props.dispatch(setFormErrors(""));
     }
 
 	render(){

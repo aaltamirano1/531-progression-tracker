@@ -18,7 +18,7 @@ export class WorkoutList extends Component{
 		this.props.dispatch(setSelectedWorkout(workout));
 	}
 	render(){
-		if(!localStorage.authToken){
+		if(!this.props.authToken){
 			return <Redirect to="/" />;
 		}else if(this.props.selectedWorkout){
 			return <Redirect to="/workout-details" />;

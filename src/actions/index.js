@@ -22,7 +22,24 @@ export const SET_FORM_ERRORS = 'SET_FORM_ERRORS';
 export const setFormErrors = (formErrors) => ({
     type: SET_FORM_ERRORS,
     formErrors
-})
+});
+
+export const getAuthToken = (username, password) => dispatch =>{
+	fetch(`${API_BASE_URL}/auth/login`, {
+    method: "POST",
+    body: JSON.stringify({username: username, password: password}),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+	})
+	.then(res=> res.json())
+	.then(data=>{     
+	    dispatch(setAuthToken(data.authToken));
+	})
+	.catch(err=>{
+	    console.error(err);
+	});
+}
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = (authToken) => ({
@@ -30,11 +47,51 @@ export const setAuthToken = (authToken) => ({
     authToken
 });
 
-export const ADD_EXERCISE = 'ADD_EXERCISE';
-export const addExercise = (name, orm) => ({
-    type: ADD_EXERCISE,
-    name,
-    orm
+export const getUserId = username => dispatch =>{
+	fetch(`${API_BASE_URL}/users/id/${username}`)
+	.then(res=>{
+		if (res.ok) {
+      return res.json();
+    }
+    throw new Error(res.statusText);
+	})
+	.then(userId=>{
+		dispatch(setUserId(userId));
+		dispatch(getExercises(userId));
+	}).catch(err=>{
+		console.error(err);
+	});
+}
+
+export const SET_USER_ID = 'SET_USER_ID';
+export const setUserId = (userId) => ({
+    type: SET_USER_ID,
+    userId
+});
+
+export const getExercises = userId => dispatch =>{
+	fetch(`${API_BASE_URL}/exercises/by-user/${userId}`, {
+		headers: {
+			"Authorization": "Bearer "+localStorage.authToken
+		}
+	})
+	.then(res=>{
+    if (res.ok) {
+      return res.json();
+    }
+    throw new Error(res.statusText);
+	}).then(resJson=>{
+		dispatch(setExercises(resJson));
+	}).catch(err=>{
+		console.error(err);
+	});
+
+}
+
+export const SET_EXERCISES = 'SET_EXERCISES';
+export const setExercises = exercises => ({
+    type: SET_EXERCISES,
+    exercises
 });
 
 export const postExercise = (name, orm) => dispatch =>{
@@ -62,6 +119,13 @@ export const postExercise = (name, orm) => dispatch =>{
 	});
 }
 
+export const ADD_EXERCISE = 'ADD_EXERCISE';
+export const addExercise = (name, orm) => ({
+    type: ADD_EXERCISE,
+    name,
+    orm
+});
+
 export const putExercise = (name, orm, id) => dispatch =>{
 	fetch(`${API_BASE_URL}/exercises/${id}`, {
 		method: "PUT",
@@ -79,71 +143,6 @@ export const putExercise = (name, orm, id) => dispatch =>{
 		console.error(err);
 	});
 }
-
-
-export const getAuthToken = (username, password) => dispatch =>{
-	fetch(`${API_BASE_URL}/auth/login`, {
-    method: "POST",
-    body: JSON.stringify({username: username, password: password}),
-    headers: {
-        'Content-Type': 'application/json'
-    }
-	})
-	.then(res=> res.json())
-	.then(data=>{     
-	    dispatch(setAuthToken(data.authToken));
-	})
-	.catch(err=>{
-	    console.error(err);
-	});
-}
-
-export const SET_USER_ID = 'SET_USER_ID';
-export const setUserId = (userId) => ({
-    type: SET_USER_ID,
-    userId
-});
-
-export const getUserId = username => dispatch =>{
-	fetch(`${API_BASE_URL}/users/id/${username}`)
-	.then(res=>{
-		if (res.ok) {
-      return res.json();
-    }
-    throw new Error(res.statusText);
-	})
-	.then(userId=>{
-		dispatch(setUserId(userId));
-		dispatch(getExercises(userId));
-	}).catch(err=>{
-		console.error(err);
-	});
-}
-
-export const getExercises = userId => dispatch =>{
-	fetch(`${API_BASE_URL}/exercises/by-user/${userId}`, {
-		headers: {
-			"Authorization": "Bearer "+localStorage.authToken
-		}
-	})
-	.then(res=>{
-    if (res.ok) {
-      return res.json();
-    }
-    throw new Error(res.statusText);
-	}).then(resJson=>{
-		dispatch(setExercises(resJson));
-	}).catch(err=>{
-		console.error(err);
-	});
-
-}
-
-export const SET_EXERCISES = 'SET_EXERCISES';
-export const setExercises = exercises => ({
-    type: SET_EXERCISES,
-    exercises
-});
 
 export const SET_SELECTED_WORKOUT = 'SET_SELECTED_WORKOUT';
 export const setSelectedWorkout = selectedWorkout => ({

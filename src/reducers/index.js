@@ -1,6 +1,7 @@
 import * as actions from '../actions';
 
 const initialState = {
+    authToken: localStorage.authToken,
     formErrors: "",
     userId: "",
     exercises: [{name: "squats", orm: 145, week: 1}, {name: "deadlifts", orm: 185, week: 2}]
@@ -22,6 +23,7 @@ export const reducer = (state=initialState, action) => {
         });
     } else if (action.type === actions.SET_AUTH_TOKEN) {
         localStorage.authToken = action.authToken;
+        console.log(action);
         return Object.assign({}, state, {
             authToken: action.authToken
         });

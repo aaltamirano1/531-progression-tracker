@@ -21,7 +21,7 @@ export class Form extends Component{
     }
 
 	render(){
-        if(localStorage.authToken){
+        if(this.props.authToken){
             return <Redirect to="/workout-list"/>;
         }
 	    return (

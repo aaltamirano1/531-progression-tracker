@@ -6,6 +6,7 @@ import './Navbar.css';
 
 export class Navbar extends Component{
 	setAuthToken(token){
+		
 		this.props.dispatch(setAuthToken(token));
 	}
 	render(){

@@ -29,7 +29,6 @@ export class WorkoutForm extends Component{
             this.nameInput.value = this.props.nameValue;
             this.ormInput.value = this.props.ormValue;
         }
-        console.log(this.props.idValue);
     }
 
 	render(){

@@ -15,9 +15,12 @@ export class WorkoutDetails extends Component{
 		this.props.dispatch(putExercise(name, orm, id));
 	}
 	render(){
-		if(!this.props.workout){
+		if(!this.props.authToken){
+			return <Redirect to="/" />;
+		}else if(!this.props.workout){
 			return <Redirect to="/workout-list" />;
 		}
+		console.log(this.props.authToken);
 		return (
 			<div className="workout-details">
 				<SubNavbar />
@@ -37,7 +40,8 @@ export class WorkoutDetails extends Component{
 }
 
 const mapStateToProps = state => ({
-    workout: state.selectedWorkout
+    workout: state.selectedWorkout,
+    authToken: state.authToken
 });
 
 export default connect(mapStateToProps)(WorkoutDetails);

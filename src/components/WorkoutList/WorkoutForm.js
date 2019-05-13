@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import $ from 'jquery';
 import './WorkoutForm.css';
+import DeleteExercise from './DeleteExercise';
 
 export class WorkoutForm extends Component{
     constructor(props) {
@@ -14,11 +15,14 @@ export class WorkoutForm extends Component{
     onSubmit(e) {
         e.preventDefault();
         const name = this.nameInput.value.trim();
-        const orm = this.ormInput.value.trim();
+        let orm = this.ormInput.value.trim();
+        if(this.props.units==="kg."){
+            orm = this.ormInput.value * 2.2046;
+        }
         if (name && orm && this.props.idValue) {
-            this.props.requestHandler(this.nameInput.value, this.ormInput.value, this.props.idValue);
+            this.props.requestHandler(this.nameInput.value, orm, this.props.idValue);
         } else if (name && orm) {
-            this.props.requestHandler(this.nameInput.value, this.ormInput.value);
+            this.props.requestHandler(this.nameInput.value, orm);
         }
         this.closeForm();
     }
@@ -41,10 +45,12 @@ export class WorkoutForm extends Component{
                     <input type="text" name="name" id="name-input" required ref={input => this.nameInput = input}/>
                     <br/>
                     <label htmlFor="orm-input">ORM:</label>
+                    <p style={{"color": "grey", "margin": "0"}}>(in {this.props.units})</p>
                     <input type="number" name="orm" id="orm-input" required ref={input => this.ormInput = input}/>
                     <br/>
-                    <button type="submit">Submit</button>
+                    <button className="red-btn" type="submit">Submit</button>
                   </form>
+                  {this.props.idValue ? <DeleteExercise /> : ""}
               </div>
           </div>
 		);
@@ -53,7 +59,8 @@ export class WorkoutForm extends Component{
 }
 const mapStateToProps = state => ({
     formErrors: state.formErrors,
-    exercises: state.exercises
+    exercises: state.exercises,
+    units: state.units
 });
 
 export default connect(mapStateToProps)(WorkoutForm);

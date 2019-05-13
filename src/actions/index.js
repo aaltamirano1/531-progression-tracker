@@ -60,6 +60,7 @@ export const getUserId = username => dispatch =>{
 		dispatch(getExercises(user.id));
 		dispatch(setUnits(user.units));
 	}).catch(err=>{
+
 		console.error(err);
 	});
 }
@@ -69,6 +70,30 @@ export const setUserId = userId => ({
     type: SET_USER_ID,
     userId
 });
+
+export const putUserUnits = (id, units) => dispatch =>{
+	console.log(`${API_BASE_URL}/users/${id}/units`);
+	fetch(`${API_BASE_URL}/users/${id}/units`, {
+		method: "PUT",
+		body: JSON.stringify({units}),
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer '+localStorage.authToken
+		}
+	})
+	.then(res=> {
+		if(res.ok){
+			return res.json();
+		}
+		throw new Error(res.statusText);
+	})
+	.then(data=>{
+		dispatch(setUnits(data.units));
+	})
+	.catch(err=>{
+		console.log(err);
+	});
+}
 
 export const SET_UNITS = 'SET_UNITS';
 export const setUnits = units => ({

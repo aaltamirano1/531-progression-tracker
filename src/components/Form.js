@@ -43,7 +43,7 @@ export class Form extends Component{
                 <label htmlFor="password-input">Password:</label>
                 <input type="password" name="password" id="password-input" required ref={input => this.passwordInput = input}/>
                 <br/>
-                <button type="submit">Submit</button>
+                <button className="red-btn" type="submit">Submit</button>
               </form>
           </div>
 		);

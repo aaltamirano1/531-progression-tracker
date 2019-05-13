@@ -43,7 +43,6 @@ export const reducer = (state=initialState, action) => {
             exercises 
         });
     } else if (action.type === actions.SET_SELECTED_EXERCISE) {
-        console.log(action.id);
         return Object.assign({}, state, {
             selectedExercise: action.id
         });

@@ -1,0 +1,21 @@
+.delete-section{
+	border: 1px solid silver;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 3px;
+	border-radius: 7px;
+  padding-bottom: 10px;
+}
+
+.delete-button{
+	border: 1px solid red;
+  padding: 7px 12px;
+  width: 200px;
+  font-weight: bold;
+  color: red;
+  background-color: white;
+  font-weight: bold;
+  cursor: pointer;
+}

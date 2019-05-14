@@ -35,10 +35,18 @@ export const reducer = (state=initialState, action) => {
             exercises: [...state.exercises, {name: action.name, orm: action.orm, week: 1}]
         });
     } else if (action.type === actions.UPDATE_EXERCISE){
-        const exercises = state.exercises.map(exercise => exercise._id === action.id ?
-            { ...exercise, name: action.name, orm: action.orm } : 
-            exercise
-        );
+        let exercises = {};
+        if(action.reqBody.name && action.reqBody.orm){
+            exercises = state.exercises.map(exercise => exercise._id === action.id ?
+                { ...exercise, name: action.reqBody.name, orm: action.reqBody.orm } : 
+                exercise
+            );
+        }else if(action.reqBody.week){
+            exercises = state.exercises.map(exercise => exercise._id === action.id ?
+                { ...exercise, week: action.reqBody.week } : 
+                exercise
+            );
+        }
         return Object.assign({}, state, {
             exercises 
         });

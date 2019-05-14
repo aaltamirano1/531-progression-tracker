@@ -15,27 +15,22 @@ export class WorkoutForm extends Component{
     onSubmit(e) {
         e.preventDefault();
         const name = this.nameInput.value.trim();
-        let orm = this.ormInput.value.trim();
-        if(this.props.units==="kg."){
-            orm = this.ormInput.value * 2.2046;
-        }
+        const orm = this.ormInput.value.trim();
         if (name && orm && this.props.idValue) {
-            this.props.requestHandler(this.nameInput.value, orm, this.props.idValue);
+            this.props.requestHandler(this.nameInput.value, this.ormInput.value, this.props.idValue);
         } else if (name && orm) {
-            this.props.requestHandler(this.nameInput.value, orm);
+            this.props.requestHandler(this.nameInput.value, this.ormInput.value);
         }
         this.closeForm();
     }
     componentDidMount(){
+        if(this.props.ormValue && this.props.nameValue){
+            this.nameInput.value = this.props.nameValue;
+            this.ormInput.value = this.props.ormValue;
+        }
     }
 
 	render(){
-        let orm = this.props.ormValue;
-        if(this.props.units==="kg."){
-            orm = Math.round(this.props.ormValue * (1/2.2046));
-        }
-        const name = this.props.nameValue;
-
 	    return (
           <div className="modal-background">  
               <div className="modal">
@@ -44,11 +39,11 @@ export class WorkoutForm extends Component{
                     <h1>{this.props.title}</h1>
                     <p className="error">{this.props.formErrors}</p>
                     <label htmlFor="name-input">Name:</label>
-                    <input type="text" name="name" id="name-input" value={name} required ref={input => this.nameInput = input}/>
+                    <input type="text" name="name" id="name-input" required ref={input => this.nameInput = input}/>
                     <br/>
                     <label htmlFor="orm-input">ORM:</label>
                     <p style={{"color": "grey", "margin": "0"}}>(in {this.props.units})</p>
-                    <input type="number" name="orm" id="orm-input" value={orm} required ref={input => this.ormInput = input}/>
+                    <input type="number" name="orm" id="orm-input" required ref={input => this.ormInput = input}/>
                     <br/>
                     <button className="red-btn" type="submit">Submit</button>
                   </form>

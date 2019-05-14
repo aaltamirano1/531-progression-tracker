@@ -11,7 +11,7 @@ import {putExercise} from '../../actions';
 
 export class WorkoutDetails extends Component{
 	updateExercise(name, orm, id){
-		this.props.dispatch(putExercise(name, orm, id));
+		this.props.dispatch(putExercise({name, orm}, id));
 	}
 	render(){
 		if(!this.props.authToken){
@@ -26,11 +26,11 @@ export class WorkoutDetails extends Component{
 			<div className="workout-details">
 				<SubNavbar />
 				<h1>{workout.name}</h1>
-				<WeeklySchedule orm={workout.orm} week={workout.week}/>
+				<WeeklySchedule workoutId={workout._id} orm={workout.orm} week={workout.week}/>
 				<Notes />
 				<WorkoutForm title="Edit Exercise" 
 					nameValue={workout.name} 
-					ormValue={workout.orm}
+					ormValue={this.props.units==="kg." ? workout.orm/2.2046 : workout.orm}
 					idValue={workout._id}
 					requestHandler={(name, orm, id) => this.updateExercise(name, orm, id)}
 				/>
@@ -42,6 +42,7 @@ export class WorkoutDetails extends Component{
 
 const mapStateToProps = state => ({
     authToken: state.authToken,
+    units: state.units,
     exercises: state.exercises,
     selected: state.selectedExercise
 });

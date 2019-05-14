@@ -156,10 +156,10 @@ export const addExercise = (name, orm) => ({
     orm
 });
 
-export const putExercise = (name, orm, id) => dispatch =>{
+export const putExercise = (reqBody, id) => dispatch =>{
 	fetch(`${API_BASE_URL}/exercises/${id}`, {
 		method: "PUT",
-		body: JSON.stringify({name, orm}),
+		body: JSON.stringify(reqBody),
 		headers: {
 			'Content-Type': 'application/json',
 			'Authorization': 'Bearer '+localStorage.authToken
@@ -167,7 +167,7 @@ export const putExercise = (name, orm, id) => dispatch =>{
 	})
 	.then(res=>res.json())
 	.then(data=>{
-		dispatch(updateExercise(name, orm, id));
+		dispatch(updateExercise(reqBody, id));
 	})
 	.catch(err=>{
 		console.error(err);
@@ -175,10 +175,9 @@ export const putExercise = (name, orm, id) => dispatch =>{
 }
 
 export const UPDATE_EXERCISE = 'UPDATE_EXERCISE';
-export const updateExercise = (name, orm, id) => ({
+export const updateExercise = (reqBody, id) => ({
     type: UPDATE_EXERCISE,
-    name,
-    orm,
+    reqBody,
     id
 });
 

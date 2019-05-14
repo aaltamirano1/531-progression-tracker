@@ -2,17 +2,18 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import './WeeklySchedule.css';
 import {connect} from 'react-redux';
+import {putExercise} from '../../actions';
 
 export class WeeklySchedule extends Component{
-	componentDidMount(){
-		$("tbody").on("click", "tr", function(){
-			if(!$(this).children().hasClass("table-panel")){
-				$("tr").removeClass("selected");
-				$(this).addClass("selected");
-				//save week selected to state;
-			}			
-		});
-		$(`#${this.props.week}`).addClass("selected");
+	constructor(props) {
+      super(props);
+      this.onSelectWeek = this.onSelectWeek.bind(this);
+  }
+	updateExercise(week){
+		this.props.dispatch(putExercise({week}, this.props.selected));
+	}
+	onSelectWeek(week){
+    this.updateExercise(week);
 	}
 	render(){
 		let orm = this.props.orm;
@@ -21,6 +22,7 @@ export class WeeklySchedule extends Component{
 		}
 		const ninetyPercent = orm * 0.9;
 		const units = this.props.units;
+		
 		return (
 				<div className="weekly-schedule">
 					<table>
@@ -33,25 +35,25 @@ export class WeeklySchedule extends Component{
 						</div>
 						</th>
 						</tr>
-					  <tr id="1">
+					  <tr onClick={e=>this.onSelectWeek(1)} className={this.props.week===1 ? "selected" : ""}>
 					    <th>Week 1</th>
 					    <td>5 x {Math.round(ninetyPercent*.65)} {units}</td>
 					    <td>5 x {Math.round(ninetyPercent*.75)} {units}</td> 
 					    <td>5+ x {Math.round(ninetyPercent*.85)} {units}</td>
 					  </tr>
-					  <tr id="2">
+					  <tr onClick={e=>this.onSelectWeek(2)} className={this.props.week===2 ? "selected" : ""}>
 					  	<th>Week 2</th> 
 					    <td>3 x {Math.round(ninetyPercent*.7)} {units}</td>
 					    <td>3 x {Math.round(ninetyPercent*.8)} {units}</td> 
 					    <td>3+ x {Math.round(ninetyPercent*.9)} {units}</td>
 					  </tr>
-					  <tr id="3">
+					  <tr onClick={e=>this.onSelectWeek(3)} className={this.props.week===3 ? "selected" : ""}>
 					    <th>Week 3</th>
 					    <td>5 x {Math.round(ninetyPercent*.75)} {units}</td> 
 					    <td>3 x {Math.round(ninetyPercent*.85)} {units}</td>
 					    <td>1+ x {Math.round(ninetyPercent*.95)} {units}</td>
 					  </tr>
-					  <tr id="4">
+					  <tr onClick={e=>this.onSelectWeek(4)} className={this.props.week===4 ? "selected" : ""}>
 					    <th>Week 4</th>
 					    <td>5 x {Math.round(ninetyPercent*.4)} {units}</td> 
 					    <td>5 x {Math.round(ninetyPercent*.5)} {units}</td>
@@ -65,7 +67,8 @@ export class WeeklySchedule extends Component{
 }
 
 const mapStateToProps = state => ({
-    units: state.units
+    units: state.units,
+    selected: state.selectedExercise
 });
 
 export default connect(mapStateToProps)(WeeklySchedule);

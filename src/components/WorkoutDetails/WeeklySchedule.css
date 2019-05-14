@@ -35,9 +35,20 @@
 	padding: 10px 30px;
 	border-radius: 15px 0 0 15px;
 }
+
 .weekly-schedule td{
 	padding: 15px 40px;
 	background-color: #2b2c2d;
 	color: white;
 	font-weight: bold;
+}
+
+@media only screen and (max-width: 800px) {
+  .weekly-schedule th{
+  	padding: 	5px 8px;
+  }
+
+  .weekly-schedule td{
+  	padding: 	5px;
+  }
 }

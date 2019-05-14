@@ -20,3 +20,9 @@
 .notes li button{
 	margin: 3px;
 }
+
+@media only screen and (max-width: 800px) {
+  .notes-section{
+  	padding: 8px;
+  }
+}

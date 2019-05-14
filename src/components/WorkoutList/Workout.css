@@ -34,3 +34,9 @@ li.workout p{
 	margin-bottom: 0;
 	font-weight: bold;
 }
+
+@media only screen and (max-width: 800px) {
+  li.workout{
+  	width: 90%;
+  }
+}

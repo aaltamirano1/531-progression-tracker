@@ -24,3 +24,10 @@ p.no-workouts{
 	margin: 20px;
 }
 
+@media only screen and (max-width: 800px) {
+  .workout-list{
+  	flex-direction: column;
+  	margin-top: 150px;
+  }
+}
+

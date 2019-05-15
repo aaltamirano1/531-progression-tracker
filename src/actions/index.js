@@ -181,6 +181,22 @@ export const updateExercise = (reqBody, id) => ({
     id
 });
 
+export const deleteExercise = (id) => dispatch =>{
+	fetch(`${API_BASE_URL}/exercises/${id}`, {
+		method: "DELETE",
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer '+localStorage.authToken
+		}
+	}).then(res=>{
+		const message = res.json.message ? ": "+res.json.message : "";
+		console.log(`${res.status}${message}`);
+		dispatch(getExercises(localStorage.userId));
+	}).catch(err=>{
+		console.error(err);
+	});
+}
+
 export const SET_SELECTED_EXERCISE = 'SET_SELECTED_EXERCISE';
 export const setSelectedExercise = id => ({
     type: SET_SELECTED_EXERCISE,

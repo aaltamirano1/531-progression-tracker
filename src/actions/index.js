@@ -72,7 +72,6 @@ export const setUserId = userId => ({
 });
 
 export const putUserUnits = (id, units) => dispatch =>{
-	console.log(`${API_BASE_URL}/users/${id}/units`);
 	fetch(`${API_BASE_URL}/users/${id}/units`, {
 		method: "PUT",
 		body: JSON.stringify({units}),
@@ -204,7 +203,6 @@ export const setSelectedExercise = id => ({
 });
 
 export const getNotes = exerciseId => dispatch =>{
-	console.log("getNotes() ran.")
 	fetch(`${API_BASE_URL}/notes/by-exercise/${exerciseId}`, {
 		headers: {
 			"Authorization": "Bearer "+localStorage.authToken
@@ -266,3 +264,28 @@ export const deleteNote = (id, exercise_id) => dispatch =>{
 		console.error(err);
 	});
 }
+
+export const putNote = (content, id) => dispatch =>{
+	fetch(`${API_BASE_URL}/notes/${id}`, {
+		method: "PUT",
+		body: JSON.stringify({content}),
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer '+localStorage.authToken
+		}
+	})
+	.then(res=>res.json())
+	.then(data=>{
+		dispatch(updateNote(content, id));
+	})
+	.catch(err=>{
+		console.error(err);
+	});
+}
+
+export const UPDATE_NOTE = 'UPDATE_NOTE';
+export const updateNote = (content, id) => ({
+    type: UPDATE_NOTE,
+    content,
+    id
+});

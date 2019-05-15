@@ -12,7 +12,7 @@ export class Note extends Component{
 		this.setState({editing: !this.state.editing});
 	}
 	render(){
-		let li = this.state.editing ? (<li><input /></li>) : 
+		let li = this.state.editing ? (<li><input onSubmit={()=>this.toggleEditing()} /></li>) : 
 		(<li>
 			<p>{this.props.content}</p>
 			<div className="notes-buttons">

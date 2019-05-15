@@ -6,7 +6,7 @@ import './WorkoutDetails.css';
 import SubNavbar from './SubNavbar';
 import WeeklySchedule from './WeeklySchedule';
 import WorkoutForm from '../WorkoutList/WorkoutForm';
-import Notes from './Notes';
+import NotesSection from './NotesSection/NotesSection';
 import {putExercise} from '../../actions';
 
 export class WorkoutDetails extends Component{
@@ -27,7 +27,7 @@ export class WorkoutDetails extends Component{
 				<SubNavbar />
 				<h1>{workout.name}</h1>
 				<WeeklySchedule workoutId={workout._id} orm={workout.orm} week={workout.week}/>
-				<Notes />
+				<NotesSection />
 				<WorkoutForm title="Edit Exercise" 
 					nameValue={workout.name} 
 					ormValue={this.props.units==="kg." ? workout.orm/2.2046 : workout.orm}

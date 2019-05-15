@@ -17,9 +17,11 @@ button.new-exercise{
 	margin: 30px;
 	cursor: pointer;
 }
+
 button.new-exercise:hover{
 	color: red;
 }
+
 p.no-workouts{
 	margin: 20px;
 }

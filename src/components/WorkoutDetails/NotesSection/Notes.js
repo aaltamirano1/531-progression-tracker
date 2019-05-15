@@ -1,25 +1,22 @@
 import React, {Component} from 'react';
 import './Notes.css';
+import Note from './Note';
 const dragula = require('react-dragula');
 const ReactDOM = require('react-dom');
 
 
 export default class Notes extends Component{
+	constructor(props){
+		super(props);
+
+	}
 	componentDidMount(){
 		const container = ReactDOM.findDOMNode(this);
     dragula([container]);
 	}
 	render(){
 		const notes = this.props.notes ? 
-		this.props.notes.map(note=>(
-			<li>
-				<p>{note.content}</p>
-				<div className="notes-buttons">
-					<button>Edit</button>
-					<button>Delete</button>
-				</div>
-			</li>
-		)) :
+		this.props.notes.map(note=>(<Note content={note.content} />)) :
 		"";
 
 		return(				

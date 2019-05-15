@@ -226,3 +226,26 @@ export const setNotes = notes => ({
     type: SET_NOTES,
     notes
 });
+
+export const postNote = (content, exercise_id) => dispatch =>{
+	fetch(`${API_BASE_URL}/notes`, {
+		method: "POST",
+		body: JSON.stringify({content, exercise_id}),
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer '+localStorage.authToken
+		}
+	})
+	.then(res=> {
+		if(res.ok){
+			return res.json;
+		}
+		throw new Error(res.statusText);
+	})
+	.then(data=>{
+		dispatch(getNotes(exercise_id));
+	})
+	.catch(err=>{
+		console.log(err);
+	});
+}

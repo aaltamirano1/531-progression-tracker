@@ -17,7 +17,7 @@ export class SubNavbar extends Component{
 		this.props.dispatch(setSelectedExercise(""));
 	}
 	editExercise(){
-		$(".modal-background").show();
+		$(".modal-background.exercise-form").show();
 		$(".delete-button").removeClass("red-btn").text("Delete");
 	}
 	render(){

@@ -10,7 +10,7 @@ export class WorkoutForm extends Component{
         this.onSubmit = this.onSubmit.bind(this);
     }
     closeForm(){
-        $(".modal-background").hide();
+        $(".modal-background.exercise-form").hide();
     }
     onSubmit(e) {
         e.preventDefault();
@@ -32,7 +32,7 @@ export class WorkoutForm extends Component{
 
 	render(){
 	    return (
-          <div className="modal-background">  
+          <div className="modal-background exercise-form">  
               <div className="modal">
                   <form className="workout-form" onSubmit={this.onSubmit}>
                     <p className="close-form" onClick={()=>this.closeForm()}><i className="fas fa-times"></i></p>

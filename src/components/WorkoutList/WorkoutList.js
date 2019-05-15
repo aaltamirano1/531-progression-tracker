@@ -9,7 +9,7 @@ import {setSelectedExercise, postExercise, getNotes} from '../../actions';
 
 export class WorkoutList extends Component{
 	newExercise(){
-		$(".modal-background").show();
+		$(".modal-background.exercise-form").show();
 	}
 	addExercise(name, orm){
 		this.props.dispatch(postExercise(name, orm));

@@ -5,7 +5,7 @@ import $ from 'jquery';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './WorkoutList.css';
-import {setSelectedExercise, postExercise} from '../../actions';
+import {setSelectedExercise, postExercise, getNotes} from '../../actions';
 
 export class WorkoutList extends Component{
 	newExercise(){
@@ -16,6 +16,7 @@ export class WorkoutList extends Component{
 	}
 	selectExercise(id){
 		this.props.dispatch(setSelectedExercise(id));
+		this.props.dispatch(getNotes(id));
 	}
 	render(){
 		if(!this.props.authToken){

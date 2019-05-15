@@ -13,7 +13,7 @@ export default class NotesSection extends Component{
 				</div>
 				<button className="new-note">+</button>		
 			</div>
-				<Notes />
+				<Notes notes={this.props.notes}/>
 			</div>
 		);
 	}

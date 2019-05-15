@@ -22,12 +22,13 @@ export class WorkoutDetails extends Component{
 		const workout = this.props.exercises.filter(exercise=>{
 			return exercise._id === this.props.selected;
 		})[0];
+
 		return (
 			<div className="workout-details">
 				<SubNavbar />
 				<h1>{workout.name}</h1>
 				<WeeklySchedule workoutId={workout._id} orm={workout.orm} week={workout.week}/>
-				<NotesSection />
+				<NotesSection notes={workout.notes}/>
 				<WorkoutForm title="Edit Exercise" 
 					nameValue={workout.name} 
 					ormValue={this.props.units==="kg." ? workout.orm/2.2046 : workout.orm}

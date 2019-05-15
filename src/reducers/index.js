@@ -54,6 +54,18 @@ export const reducer = (state=initialState, action) => {
         return Object.assign({}, state, {
             selectedExercise: action.id
         });
-    } 
+    } else if (action.type === actions.SET_NOTES) {        
+        if(action.notes.length>0){
+            const notes = action.notes.map(note=>{ return {content: note.content}});
+            const exercises = state.exercises.map(exercise => exercise._id === action.notes[0].exercise ?
+                { ...exercise, notes: notes} : 
+                exercise
+            ); 
+            return Object.assign({}, state, {
+                exercises 
+            });
+        }
+         
+    }
     return state;
 };

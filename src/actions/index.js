@@ -186,3 +186,27 @@ export const setSelectedExercise = id => ({
     type: SET_SELECTED_EXERCISE,
    	id
 });
+
+export const getNotes = exerciseId => dispatch =>{
+	fetch(`${API_BASE_URL}/notes/by-exercise/${exerciseId}`, {
+		headers: {
+			"Authorization": "Bearer "+localStorage.authToken
+		}
+	})
+	.then(res=>{
+    if (res.ok) {
+      return res.json();
+    }
+    throw new Error(res.statusText);
+	}).then(resJson=>{
+		dispatch(setNotes(resJson));
+	}).catch(err=>{
+		console.error(err);
+	});
+}
+
+export const SET_NOTES = 'SET_NOTES';
+export const setNotes = notes => ({
+    type: SET_NOTES,
+    notes
+});

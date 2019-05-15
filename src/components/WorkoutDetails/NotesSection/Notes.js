@@ -10,22 +10,21 @@ export default class Notes extends Component{
     dragula([container]);
 	}
 	render(){
+		const notes = this.props.notes ? 
+		this.props.notes.map(note=>(
+			<li>
+				<p>{note.content}</p>
+				<div className="notes-buttons">
+					<button>Edit</button>
+					<button>Delete</button>
+				</div>
+			</li>
+		)) :
+		"";
+
 		return(				
 			<ul className="notes">
-				<li>
-					<p>Keep your should-blades back. Push up with your traps and down through the floor with you feet.</p>
-					<div className="notes-buttons">
-						<button>Edit</button>
-						<button>Delete</button>
-					</div>
-				</li>
-				<li>
-					<p>Your stance should be wide enough to keep you knees above you ankles.</p>
-					<div className="notes-buttons">
-						<button>Edit</button>
-						<button>Delete</button>
-					</div>
-				</li>
+				{notes}
 			</ul>
 		);
 	}

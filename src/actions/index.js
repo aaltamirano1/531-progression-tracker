@@ -204,6 +204,7 @@ export const setSelectedExercise = id => ({
 });
 
 export const getNotes = exerciseId => dispatch =>{
+	console.log("getNotes() ran.")
 	fetch(`${API_BASE_URL}/notes/by-exercise/${exerciseId}`, {
 		headers: {
 			"Authorization": "Bearer "+localStorage.authToken
@@ -215,16 +216,17 @@ export const getNotes = exerciseId => dispatch =>{
     }
     throw new Error(res.statusText);
 	}).then(resJson=>{
-		dispatch(setNotes(resJson));
+		dispatch(setNotes(resJson, exerciseId));
 	}).catch(err=>{
 		console.error(err);
 	});
 }
 
 export const SET_NOTES = 'SET_NOTES';
-export const setNotes = notes => ({
+export const setNotes = (notes, exercise_id) => ({
     type: SET_NOTES,
-    notes
+    notes,
+    exercise_id
 });
 
 export const postNote = (content, exercise_id) => dispatch =>{
@@ -247,5 +249,20 @@ export const postNote = (content, exercise_id) => dispatch =>{
 	})
 	.catch(err=>{
 		console.log(err);
+	});
+}
+
+export const deleteNote = (id, exercise_id) => dispatch =>{
+	console.log("delete note ran.")
+	fetch(`${API_BASE_URL}/notes/${id}`, {
+		method: "DELETE",
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Bearer '+localStorage.authToken
+		}
+	}).then(res=>{
+		dispatch(getNotes(exercise_id));
+	}).catch(err=>{
+		console.error(err);
 	});
 }

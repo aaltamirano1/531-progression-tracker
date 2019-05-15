@@ -16,8 +16,10 @@ export default class Notes extends Component{
 	}
 	render(){
 		const notes = this.props.notes ? 
-		this.props.notes.map(note=>(<Note content={note.content} />)) :
+		this.props.notes.map(note=>(<Note content={note.content} noteId={note.id} />)) :
 		"";
+
+		console.log(notes);
 
 		return(				
 			<ul className="notes">

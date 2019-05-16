@@ -30,10 +30,6 @@ export const reducer = (state=initialState, action) => {
         return Object.assign({}, state, {
             exercises: action.exercises
         });
-    } else if (action.type === actions.ADD_EXERCISE) {
-        return Object.assign({}, state, {
-            exercises: [...state.exercises, {name: action.name, orm: action.orm, week: 1}]
-        });
     } else if (action.type === actions.UPDATE_EXERCISE){
         let exercises = {};
         if(action.reqBody.name && action.reqBody.orm){

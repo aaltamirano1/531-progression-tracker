@@ -3,6 +3,7 @@
 	align-items: center;
 	margin-top: 120px;
 	padding-left: none;
+	flex-wrap: wrap;
 }
 
 button.new-exercise{

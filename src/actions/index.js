@@ -137,7 +137,7 @@ export const postExercise = (name, orm) => dispatch =>{
 	})
 	.then(res=> {
 		if(res.ok){
-			return res.json;
+			return res;
 		}
 		throw new Error(res.statusText);
 	})

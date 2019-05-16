@@ -4,7 +4,6 @@ import {
 	SET_USER_ID, setUserId,
 	SET_UNITS, setUnits,
 	SET_EXERCISES, setExercises,
-	ADD_EXERCISE, addExercise,
 	UPDATE_EXERCISE, updateExercise,
 	SET_SELECTED_EXERCISE, setSelectedExercise,
 	SET_NOTES, setNotes
@@ -52,17 +51,6 @@ describe('setExercises', () => {
         const action = setExercises(exercises);
         expect(action.type).toEqual(SET_EXERCISES);
         expect(action.exercises).toEqual(exercises);
-    });
-});
-
-describe('addExercise', () => {
-    it('Should return the action', () => {
-        const name = 'Squats';
-        const orm = 200;
-        const action = addExercise(name, orm);
-        expect(action.type).toEqual(ADD_EXERCISE);
-        expect(action.name).toEqual(name);
-        expect(action.orm).toEqual(orm);
     });
 });
 

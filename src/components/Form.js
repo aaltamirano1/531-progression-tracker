@@ -32,7 +32,7 @@ export class Form extends Component{
 	    return (
           <div className="landing">
               <div className="landing-content">
-              <p>I will be on vacation next week and there will be no video, just reminding everyone again.  Thanks for allowing me to show our process so far and how everything is going, I have gotten wonderful advice and reassurance from so many of you and I'm so so grateful</p>
+              <p>This is a tool for people running a 5/3/1 progression on a lift or following a 5/3/1 program. Now you can stay on track without a calculator and notebook!</p>
               </div>
               <form onSubmit={this.onSubmit}>
                 <h1>{this.props.title}</h1>

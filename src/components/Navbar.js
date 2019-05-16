@@ -14,23 +14,24 @@ export class Navbar extends Component{
 	}
 	render(){
 		const path = this.props.history.location.pathname;
-		let links = "";
+		let link = "";
 		switch(path){
 			case "/":
-				links= (<li><Link target="_self" to="/sign-up">Sign Up</Link></li>);
+				link= (<li><Link target="_self" to="/sign-up">Sign Up</Link></li>);
 				break;
 			case "/sign-up":
-				links= (<li><Link target="_self" to="/">Log In</Link></li>);
+				link= (<li><Link target="_self" to="/">Log In</Link></li>);
 				break;
 			default:
-				links= [<li onClick={()=>this.showFaqs()}>FAQs</li>, <li onClick={()=>this.setAuthToken("")}>Log Out</li>];
+				link= ( <li onClick={()=>this.setAuthToken("")}>Log Out</li>);
 		}
 
 		return (
 			<nav className="nav">
 				<img src={process.env.PUBLIC_URL + '/logo.png'} alt="Logo" />
 				<ul>
-					{links}				
+					<li onClick={()=>this.showFaqs()}>FAQs</li>
+					{link}				
 				</ul>
 			</nav>
 		);

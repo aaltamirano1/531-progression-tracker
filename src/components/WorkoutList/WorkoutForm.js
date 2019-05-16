@@ -12,6 +12,12 @@ export class WorkoutForm extends Component{
     closeForm(){
         $(".modal-background.exercise-form").hide();
     }
+    setInputValues(){
+        if(this.props.ormValue && this.props.nameValue){
+            this.nameInput.value = this.props.nameValue;
+            this.ormInput.value = this.props.ormValue;
+        }
+    }
     onSubmit(e) {
         e.preventDefault();
         const name = this.nameInput.value.trim();
@@ -24,10 +30,12 @@ export class WorkoutForm extends Component{
         this.closeForm();
     }
     componentDidMount(){
-        if(this.props.ormValue && this.props.nameValue){
-            this.nameInput.value = this.props.nameValue;
-            this.ormInput.value = this.props.ormValue;
-        }
+        //set initially
+        this.setInputValues();
+    }
+    componentDidUpdate(){
+        //set again when it changes.
+        this.setInputValues();
     }
 
 	render(){

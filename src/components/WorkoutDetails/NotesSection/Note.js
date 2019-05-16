@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {deleteNote} from '../../../actions';
-//import './Notes.css';
+import './Note.css';
 
 export class Note extends Component{
 	constructor(props){
@@ -12,7 +12,12 @@ export class Note extends Component{
 		this.setState({editing: !this.state.editing});
 	}
 	render(){
-		let li = this.state.editing ? (<li><input onSubmit={()=>this.toggleEditing()} /></li>) : 
+		let li = this.state.editing ? 
+		(<li>
+			<form className="note-editing" onSubmit={()=>this.toggleEditing()}>
+				<textarea name="note" id="note-input" rows="4" cols="50" value={this.props.content} required ref={input => this.noteInput = input}></textarea>
+			</form>
+		</li>) : 
 		(<li>
 			<p>{this.props.content}</p>
 			<div className="notes-buttons">

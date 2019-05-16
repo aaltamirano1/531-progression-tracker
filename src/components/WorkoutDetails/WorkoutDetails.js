@@ -31,7 +31,7 @@ export class WorkoutDetails extends Component{
 				<NotesSection notes={workout.notes}/>
 				<WorkoutForm title="Edit Exercise" 
 					nameValue={workout.name} 
-					ormValue={this.props.units==="kg." ? workout.orm/2.2046 : workout.orm}
+					ormValue={this.props.units==="kg." ? Math.round(workout.orm/2.2046) : workout.orm}
 					idValue={workout._id}
 					requestHandler={(name, orm, id) => this.updateExercise(name, orm, id)}
 				/>

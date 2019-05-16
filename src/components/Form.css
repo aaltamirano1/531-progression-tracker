@@ -9,16 +9,18 @@
 	background-color: #3a539b;
 	color: white;
 	font-weight: bold;
-	padding: 30px;
-	text-align: center;
+	padding: 50px;
+	text-align: left;
 	display: flex;
-	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 	padding-top: 130px;
 	box-sizing: border-box;
 }
 
 .landing-content p{
-	line-height: 40px;
+	line-height: 45px;
+	margin: 0;
 }
 
 form{

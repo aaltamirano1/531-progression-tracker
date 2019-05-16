@@ -15,6 +15,14 @@
 	padding: 30px 15px;
 }
 
+.faqs-text .question{
+	font-weight: bold;
+	margin: 25px 0 -10px 0;
+}
+
+.faqs-text p{
+}
+
 @media only screen and (max-width: 800px) {
 	.faqs-text{
 		max-height: 500px; 

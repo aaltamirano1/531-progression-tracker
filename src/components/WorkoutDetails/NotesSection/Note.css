@@ -1,4 +1,9 @@
-form.note-editing textarea{
+form.note-editing{
 	height: auto;
-	width: auto;
+	width: 100%;
+}
+
+form.note-editing input{
+	width: 100%;
+	height: 30px;
 }

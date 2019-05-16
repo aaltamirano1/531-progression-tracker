@@ -275,17 +275,7 @@ export const putNote = (content, id) => dispatch =>{
 		}
 	})
 	.then(res=>res.json())
-	.then(data=>{
-		dispatch(updateNote(content, id));
-	})
 	.catch(err=>{
 		console.error(err);
 	});
 }
-
-export const UPDATE_NOTE = 'UPDATE_NOTE';
-export const updateNote = (content, id) => ({
-    type: UPDATE_NOTE,
-    content,
-    id
-});

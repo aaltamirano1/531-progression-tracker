@@ -8,7 +8,7 @@ export class NoteForm extends Component{
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
     }
-    closeForm(){
+    closeModal(){
         $(".modal-background.note-form").hide();
     }
     onSubmit(e) {
@@ -23,7 +23,7 @@ export class NoteForm extends Component{
           <div className="modal-background note-form">  
               <div className="modal">
                   <form className="workout-form" onSubmit={this.onSubmit}>
-                    <p className="close-form" onClick={()=>this.closeForm()}><i className="fas fa-times"></i></p>
+                    <p className="close-modal" onClick={()=>this.closeModal()}><i className="fas fa-times"></i></p>
                     <h1>New Note</h1>
                     <p className="error">{this.props.formErrors}</p>
                     <textarea name="note" id="note-input" rows="4" cols="50" required ref={input => this.noteInput = input}></textarea>

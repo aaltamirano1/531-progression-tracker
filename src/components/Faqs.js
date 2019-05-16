@@ -7,7 +7,6 @@ export default class Faqs extends Component{
         $(".modal-background.faqs").hide();
     }
 	render(){
-		console.log("FAQs");
 		return (
 			<div className="modal-background faqs">  
 	      <div className="modal">

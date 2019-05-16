@@ -5,7 +5,6 @@ import {
     SET_USER_ID, setUserId,
     SET_UNITS, setUnits,
     SET_EXERCISES, setExercises,
-    ADD_EXERCISE, addExercise,
     UPDATE_EXERCISE, updateExercise,
     SET_SELECTED_EXERCISE, setSelectedExercise,
     SET_NOTES, setNotes
@@ -67,4 +66,62 @@ describe('reducer', () => {
         });
     });
 
+    describe('setExercises', () => {
+        it('Should set the exercises in the state.', () => {
+            let state = {};
+            const exercises = [{name: 'Squats', orm: 150, id: 'wuhtrdvjuy'},{name: 'Deadlifts', orm: 205, id:'wuhtrdvjuz'}];
+            state = reducer(state, setExercises(exercises));
+            expect(state).toEqual({exercises});
+        });
+    });
+
+    describe('updateExercise', () => {
+        it('Should update an exercise.', () => {
+            let state = {exercises: [
+                {name: 'Squats', orm: 150, _id: 'wuhtrdvjuy'},
+                {name: 'Deadlifts', orm: 205, _id:'wuhtrdvjuz'}
+            ]};
+
+            const reqBody = {name: 'Squats', orm: 170};
+            const id = 'wuhtrdvjuy';
+
+            state = reducer(state, updateExercise(reqBody, id));
+            expect(state).toEqual({exercises: [
+                {name: 'Squats', orm: 170, _id: 'wuhtrdvjuy'},
+                {name: 'Deadlifts', orm: 205, _id:'wuhtrdvjuz'}
+            ]});
+        });
+    });
+
+    describe('setSelectedExercise', () => {
+        it('Should set the selected exercise to an exercise ID.', () => {
+            let state = {};
+            const id = 'wuhtrdvjuy';
+            state = reducer(state, setSelectedExercise(id));
+            expect(state).toEqual({selectedExercise: id});
+        });
+    });
+
+    describe('setNotes', () => {
+        it('Should set the notes for an exercise in the state.', () => {
+            let state = {exercises: [
+                {name: 'Squats', orm: 150, _id: 'wuhtrdvjuy', notes: []}
+            ]};
+
+            const notes = [
+                {content: 'Move your hips and knees at the same time.', _id:'wuhtrdvjuz'},
+                {content: 'Push up with your traps and push your feet down through the floor.', _id:'wuhtrdvjuw'}
+            ];
+            const exercise_id = 'wuhtrdvjuy';
+
+
+            state = reducer(state, setNotes(notes, exercise_id));
+            expect(state).toEqual({exercises: [
+                {name: 'Squats', orm: 150, _id: 'wuhtrdvjuy', notes: [
+                    {content: 'Move your hips and knees at the same time.', id:'wuhtrdvjuz'},
+                    {content: 'Push up with your traps and push your feet down through the floor.', id:'wuhtrdvjuw'}
+                ]}
+            ]});
+        });
+    });
 });

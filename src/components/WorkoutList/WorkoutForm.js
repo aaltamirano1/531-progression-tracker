@@ -9,7 +9,7 @@ export class WorkoutForm extends Component{
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
     }
-    closeForm(){
+    closeModal(){
         $(".modal-background.exercise-form").hide();
     }
     setInputValues(){
@@ -43,7 +43,7 @@ export class WorkoutForm extends Component{
           <div className="modal-background exercise-form">  
               <div className="modal">
                   <form className="workout-form" onSubmit={this.onSubmit}>
-                    <p className="close-form" onClick={()=>this.closeForm()}><i className="fas fa-times"></i></p>
+                    <p className="close-modal" onClick={()=>this.closeModal()}><i className="fas fa-times"></i></p>
                     <h1>{this.props.title}</h1>
                     <p className="error">{this.props.formErrors}</p>
                     <label htmlFor="name-input">Name:</label>

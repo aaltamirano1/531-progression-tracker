@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from "react-router-dom";
+import $ from 'jquery';
 import{setAuthToken} from '../actions';
 import {connect} from 'react-redux';
 import './Navbar.css';
@@ -7,6 +8,9 @@ import './Navbar.css';
 export class Navbar extends Component{
 	setAuthToken(token){		
 		this.props.dispatch(setAuthToken(token));
+	}
+	showFaqs(){
+		$(".modal-background.faqs").show();
 	}
 	render(){
 		const path = this.props.history.location.pathname;
@@ -19,7 +23,7 @@ export class Navbar extends Component{
 				links= (<li><Link target="_self" to="/">Log In</Link></li>);
 				break;
 			default:
-				links= [<li>FAQs</li>, <li onClick={()=>this.setAuthToken("")}>Log Out</li>];
+				links= [<li onClick={()=>this.showFaqs()}>FAQs</li>, <li onClick={()=>this.setAuthToken("")}>Log Out</li>];
 		}
 
 		return (

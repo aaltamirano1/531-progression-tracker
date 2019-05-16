@@ -1,0 +1,31 @@
+.faqs.modal-background{
+	padding-top: 40px;
+}
+
+.faqs .modal{
+	max-width: 700px;
+	position: relative;
+}
+
+.faqs-text{
+	padding-top: 30px;
+	background-color: white;
+	border: 1px solid silver;
+	border-radius: 7px;
+	padding: 30px 15px;
+}
+
+@media only screen and (max-width: 800px) {
+	.faqs-text{
+		max-height: 500px; 
+		overflow-y: scroll;
+	}
+	.faqs-text .close-modal{
+		background-color: white;
+	  width: 35px;
+	  height: 45px;
+	  border: 1px solid silver;
+	  border-radius: 50%;
+	  padding: 5px 0 0 15px;
+	}
+}

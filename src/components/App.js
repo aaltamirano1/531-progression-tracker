@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import Form from './Form';
 import WorkoutList from './WorkoutList/WorkoutList';
 import WorkoutDetails from './WorkoutDetails/WorkoutDetails';
+import Faqs from './Faqs';
 
 import './App.css';
 import {registerUser, getAuthToken, getUserId} from '../actions';
@@ -34,6 +35,7 @@ export class App extends React.Component{
 		      />)} />
 		      <Route exact path="/workout-list" component={WorkoutList} />
 		      <Route exact path="/workout-details" component={WorkoutDetails} />
+		      <Faqs />
 		    </div>
 	    </Router>
 	  );

@@ -5,7 +5,7 @@ import $ from 'jquery';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './WorkoutList.css';
-import {setSelectedExercise, postExercise, getNotes} from '../../actions';
+import {setSelectedExercise, postExercise, getNotes, getExercises} from '../../actions';
 
 export class WorkoutList extends Component{
 	newExercise(){
@@ -18,6 +18,11 @@ export class WorkoutList extends Component{
 		this.props.dispatch(setSelectedExercise(id));
 		this.props.dispatch(getNotes(id));
 	}
+	componentWillMount(){
+		if(!this.props.exercises){
+			this.props.dispatch(getExercises(this.props.userId));
+		}
+	}
 	render(){
 		if(!this.props.authToken){
 			return <Redirect to="/" />;
@@ -26,7 +31,7 @@ export class WorkoutList extends Component{
 		}
 
 		const workoutsHTML = 
-			this.props.exercises 
+			this.props.exercises
 			? this.props.exercises.map(workout=>(<Workout key={workout._id} name={workout.name} orm={workout.orm} select={()=>this.selectExercise(workout._id)}/>)) 
 			: <p className="no-workouts"><em>You have added no workouts yet. Please press the button to add one.</em></p>;
 			
@@ -44,7 +49,8 @@ export class WorkoutList extends Component{
 const mapStateToProps = state => ({
     authToken: state.authToken,
     exercises: state.exercises,
-    selectedExercise: state.selectedExercise
+    selectedExercise: state.selectedExercise,
+    userId: state.userId
 });
 
 export default connect(mapStateToProps)(WorkoutList);

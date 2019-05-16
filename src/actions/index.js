@@ -13,7 +13,8 @@ export const registerUser = (username, password) => dispatch =>{
       if(data.code){
         dispatch(setFormErrors(`Problem with ${data.location}. ${data.message}.`));
       }else{
-        dispatch(setAuthToken(username, password));
+        dispatch(getAuthToken(username, password));
+        dispatch(getUserId(username));
       }
   });
 }

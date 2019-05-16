@@ -3,7 +3,7 @@ import * as actions from '../actions';
 const initialState = {
     authToken: localStorage.authToken,
     formErrors: "",
-    userId: "",
+    userId: localStorage.userId,
     units: "lbs."
 };
 

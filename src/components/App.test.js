@@ -1,11 +1,9 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {Provider} from 'react-redux';
+
 import store from '../store';
 import {registerUser, getAuthToken, getUserId} from '../actions';
 import {App} from './App';
-
-const app = (<Provider store={store}><App /></Provider>);
 
 const mockRegisterUserAction = {
     type: 'REGISTER_USER'

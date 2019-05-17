@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import {connect} from 'react-redux';
 
-import{putUserUnits, setSelectedExercise} from '../../actions';
+import {putUserUnits, setSelectedExercise} from '../../actions';
 import './SubNavbar.css';
 
 export class SubNavbar extends Component{
@@ -24,10 +24,12 @@ export class SubNavbar extends Component{
 		return (
 				<nav className="workout-details-nav">
 					<ul>
-						<li onClick={()=>this.clearSelectedExercise()}><i className="fas fa-arrow-left"></i> All Workouts</li>
-						<li onClick={()=>this.editExercise()}>Edit</li>
-						<li onClick={()=>this.updateUnits()}>Unit: {this.props.units}</li>
-						</ul>
+						<li id="all-workouts-link" onClick={()=>this.clearSelectedExercise()}>
+							<i className="fas fa-arrow-left"></i> All Workouts
+						</li>
+						<li id="edit-exercise-link" onClick={()=>this.editExercise()}>Edit</li>
+						<li id="toggle-units-link" onClick={()=>this.updateUnits()}>Unit: {this.props.units}</li>
+					</ul>
 				</nav>
 		);
 	}

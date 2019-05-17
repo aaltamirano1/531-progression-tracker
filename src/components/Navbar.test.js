@@ -1,7 +1,6 @@
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {shallow} from 'enzyme';
 
-import store from '../store';
 import {setAuthToken} from '../actions';
 import {Navbar} from './Navbar';
 

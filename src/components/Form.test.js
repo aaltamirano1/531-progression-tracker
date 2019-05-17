@@ -1,7 +1,6 @@
 import React from 'react';
 import {shallow, mount} from 'enzyme';
 
-import store from '../store';
 import {setFormErrors} from '../actions';
 import {Form} from './Form';
 

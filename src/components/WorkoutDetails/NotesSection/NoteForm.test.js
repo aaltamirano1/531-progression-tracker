@@ -16,15 +16,15 @@ jest.mock('../../../actions', () => Object.assign({},
 ));
 
 describe('<NoteForm/>', () => {
- it('Renders without crashing.', () => {
+  it('Renders without crashing.', () => {
     const dispatch = jest.fn();
-    shallow(<NoteForm dispatch={dispatch} />);
+    shallow(<NoteForm />);
   });
 
   it('Runs closeModal when x is clicked.', () => {
     const closeModal = jest.spyOn(NoteForm.prototype, 'closeModal');
     const dispatch = jest.fn();
-    const wrapper = shallow(<NoteForm dispatch={dispatch}/>);
+    const wrapper = shallow(<NoteForm />);
 
     wrapper.find('.close-modal').simulate('click');
     wrapper.update();

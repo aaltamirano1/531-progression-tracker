@@ -25,11 +25,11 @@ export class WeeklySchedule extends Component{
 					<table>
 					<tbody>
 						<tr>
-						<th className="table-panel" colSpan={4}>
-						<div>
-						<p>ORM: {Math.round(orm)}{units}</p>
-						</div>
-						</th>
+							<th className="table-panel" colSpan={4}>
+								<div>
+									<p>ORM: {Math.round(orm)}{units}</p>
+								</div>
+							</th>
 						</tr>
 					  <tr onClick={e=>this.updateWeek(1)} className={this.props.week===1 ? "selected" : ""}>
 					    <th>Week 1</th>

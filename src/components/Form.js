@@ -5,25 +5,25 @@ import './Form.css';
 import {setFormErrors} from '../actions';
 
 export class Form extends Component{
-    constructor(props) {
-        super(props);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
+  constructor(props) {
+      super(props);
+      this.onSubmit = this.onSubmit.bind(this);
+  }
 
-    onSubmit(e) {
-        e.preventDefault();
-        const username = this.usernameInput.value.trim();
-        const password = this.passwordInput.value.trim();
-        if (username && password && this.props.onAdd) {
-            this.props.onAdd(this.usernameInput.value, this.passwordInput.value);
-        }
-        this.usernameInput.value = '';
-        this.passwordInput.value = '';
-    }
+  onSubmit(e) {
+      e.preventDefault();
+      const username = this.usernameInput.value.trim();
+      const password = this.passwordInput.value.trim();
+      if (username && password && this.props.onAdd) {
+          this.props.onAdd(this.usernameInput.value, this.passwordInput.value);
+      }
+      this.usernameInput.value = '';
+      this.passwordInput.value = '';
+  }
 
-    componentDidMount(){
-        this.props.dispatch(setFormErrors(""));
-    }
+  componentDidMount(){
+      this.props.dispatch(setFormErrors(""));
+  }
 
 	render(){
         if(this.props.authToken){

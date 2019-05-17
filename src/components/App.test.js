@@ -33,35 +33,32 @@ jest.mock('../actions', () => Object.assign({},
 ));
 
 describe('<App/>', () => {
- it('Renders without crashing', () => {
-      shallow(<App store={store} />);
-  });
+    it('Renders without crashing', () => {
+        shallow(<App store={store} />);
+    });
 
-  it('Dispatches register user action when addUser runs.', () => {
-  	const dispatch = jest.fn();
-		const wrapper = shallow(<App store={store} dispatch={dispatch}/>);
-		dispatch.mockClear();
+    it('Dispatches register user action when addUser runs.', () => {
+        const dispatch = jest.fn();
+        const wrapper = shallow(<App store={store} dispatch={dispatch}/>);
+        dispatch.mockClear();
 
-    const instance = wrapper.instance();
-    const username = "gitpull";
-    const password = "password11";
-    instance.addUser(username, password);
-		expect(dispatch).toHaveBeenCalledWith(mockRegisterUserAction);
-	});
+        const instance = wrapper.instance();
+        const username = "gitpull";
+        const password = "password11";
+        instance.addUser(username, password);
+        expect(dispatch).toHaveBeenCalledWith(mockRegisterUserAction);
+    });
 
-	it('Dispatches getAuthToken and getUserId actions when getAuthToken runs.', () => {
-  	const dispatch = jest.fn();
-		const wrapper = shallow(<App store={store} dispatch={dispatch}/>);
-		dispatch.mockClear();
+    it('Dispatches getAuthToken and getUserId actions when getAuthToken runs.', () => {
+    	const dispatch = jest.fn();
+    	const wrapper = shallow(<App store={store} dispatch={dispatch}/>);
+    	dispatch.mockClear();
 
-    const instance = wrapper.instance();
-    const username = "gitpull";
-    const password = "password11";
-    instance.getAuthToken(username, password);
-		expect(dispatch).toHaveBeenCalledWith(mockGetAuthTokenAction);
-		expect(dispatch).toHaveBeenCalledWith(mockGetUserIdAction);
-	});
-
-
-
+        const instance = wrapper.instance();
+        const username = "gitpull";
+        const password = "password11";
+        instance.getAuthToken(username, password);
+    	expect(dispatch).toHaveBeenCalledWith(mockGetAuthTokenAction);
+    	expect(dispatch).toHaveBeenCalledWith(mockGetUserIdAction);
+    });
 });

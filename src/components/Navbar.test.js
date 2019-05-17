@@ -24,7 +24,7 @@ describe('<Navbar/>', () => {
     shallow(<Navbar dispatch={dispatch} history={history}/>);
   });
 
-    it('Has a showFaqs function', () => {
+  it('Has a showFaqs function', () => {
       const wrapper = shallow(<Navbar history={history}/>);
       expect(wrapper.instance().showFaqs).toBeDefined();
   });

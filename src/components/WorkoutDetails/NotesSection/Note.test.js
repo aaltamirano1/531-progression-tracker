@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 
 import {putNote, deleteNote, getNotes} from '../../../actions';
 import {Note} from './Note';
@@ -41,19 +41,19 @@ describe('<Note/>', () => {
   it('Toggles editing property when Edit Note button is clicked.', () => {
     const toggleEditing = jest.spyOn(Note.prototype, 'toggleEditing');
     const dispatch = jest.fn();
-    const wrapper = shallow(<Note units={"lbs."}/>);
+    const content = "Push up with your traps and push your feet down through the floor.";
+    const wrapper = shallow(<Note units={"lbs."} content={content}/>);
 
     expect(wrapper.state('editing')).toBe(false);
-    expect(wrapper.find('p')).toBeTruthy;
-    expect(wrapper.find('#edit-note-button')).toBeTruthy;
-    expect(wrapper.find('#delete-note-button')).toBeTruthy;
-    expect(wrapper.find('form')).toBeTruthy;
+    expect(wrapper.find('p').text()).toEqual(content);
+    expect(wrapper.find('input[type="text"]').value).toBeUndefined();
 
     wrapper.find('#edit-note-button').simulate('click');
     wrapper.update();
+
+    expect(toggleEditing).toHaveBeenCalled();
     expect(wrapper.state('editing')).toBe(true);
-    expect(wrapper.find('form')).toBeTruthy;
-  });
+ });
 
   it('Dispatches deleteNote when the Delete Note button is first clicked.', () => {
     const dispatch = jest.fn();
@@ -65,5 +65,4 @@ describe('<Note/>', () => {
     wrapper.update();
     expect(dispatch).toHaveBeenCalledWith(deleteNote(noteId, exerciseId));
   });
-
 });

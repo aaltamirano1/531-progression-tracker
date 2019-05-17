@@ -20,7 +20,7 @@ export default class NotesSection extends Component{
 				</div>
 				{this.props.notes.length>0 ? 
 					<Notes notes={this.props.notes}/> :
-					<p style={{"marginTop": "-10px"}}><em>This exercise has no notes yet.</em></p>
+					<p id="no-notes" style={{"marginTop": "-10px"}}><em>This exercise has no notes yet.</em></p>
 				}
 				<NoteForm />
 			</div>

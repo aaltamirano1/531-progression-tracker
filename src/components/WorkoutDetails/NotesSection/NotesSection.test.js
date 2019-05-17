@@ -2,8 +2,6 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import NotesSection from './NotesSection';
 
-const seedNotes = [{content: "Keep your shoulders back.", _id: 'wuhtrdvjuy'}];
-
 describe('<NotesSection/>', () => {
 	it('Renders without crashing.', () => {
       shallow(<NotesSection notes={[]}/>);
@@ -22,5 +20,4 @@ describe('<NotesSection/>', () => {
     const wrapper = shallow(<NotesSection notes={[]}/>);
     expect(wrapper.find('#no-notes em').text()).toEqual('This exercise has no notes yet.');
   });
-
 });

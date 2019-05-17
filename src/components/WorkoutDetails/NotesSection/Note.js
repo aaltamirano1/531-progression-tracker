@@ -41,8 +41,8 @@ export class Note extends Component{
 		(<li>
 			<p>{this.props.content}</p>
 			<div className="notes-buttons">
-				<button onClick={()=>this.toggleEditing()}>Edit</button>
-				<button onClick={()=>this.props.dispatch(deleteNote(this.props.noteId, this.props.exercise))}>Delete</button>
+				<button id="edit-note-button" onClick={()=>this.toggleEditing()}>Edit</button>
+				<button id="delete-note-button" onClick={()=>this.props.dispatch(deleteNote(this.props.noteId, this.props.exercise))}>Delete</button>
 			</div>
 		</li>);
 

@@ -8,7 +8,6 @@ const ReactDOM = require('react-dom');
 export default class Notes extends Component{
 	constructor(props){
 		super(props);
-
 	}
 	componentDidMount(){
 		const container = ReactDOM.findDOMNode(this);

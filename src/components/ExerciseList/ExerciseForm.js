@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import $ from 'jquery';
-import './WorkoutForm.css';
+import './ExerciseForm.css';
 import DeleteExercise from './DeleteExercise';
 
-export class WorkoutForm extends Component{
+export class ExerciseForm extends Component{
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
@@ -25,7 +25,6 @@ export class WorkoutForm extends Component{
         let orm = this.ormInput.value.trim();
         if(this.props.units === "kg."){
             orm = orm * 2.2046;
-            console.log(orm);
         }
 
         if (name && orm && this.props.idValue) {
@@ -48,7 +47,7 @@ export class WorkoutForm extends Component{
 	    return (
           <div className="modal-background exercise-form">  
               <div className="modal">
-                  <form className="workout-form" onSubmit={this.onSubmit}>
+                  <form className="exercise-form" onSubmit={this.onSubmit}>
                     <p className="close-modal" onClick={()=>this.closeModal()}><i className="fas fa-times"></i></p>
                     <h1>{this.props.title}</h1>
                     <p className="error">{this.props.formErrors}</p>
@@ -74,4 +73,4 @@ const mapStateToProps = state => ({
     units: state.units
 });
 
-export default connect(mapStateToProps)(WorkoutForm);
+export default connect(mapStateToProps)(ExerciseForm);

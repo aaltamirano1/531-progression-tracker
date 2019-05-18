@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 
 import Navbar from './Navbar';
 import Form from './Form';
-import WorkoutList from './WorkoutList/WorkoutList';
-import WorkoutDetails from './WorkoutDetails/WorkoutDetails';
+import ExerciseList from './ExerciseList/ExerciseList';
+import ExerciseDetails from './ExerciseDetails/ExerciseDetails';
 import Faqs from './Faqs';
 
 import './App.css';
@@ -33,8 +33,8 @@ export class App extends React.Component{
 		      	title="Login" 
 		      	onAdd={(username, password) => this.getAuthToken(username, password)}
 		      />)} />
-		      <Route exact path="/workout-list" component={WorkoutList} />
-		      <Route exact path="/workout-details" component={WorkoutDetails} />
+		      <Route exact path="/exercise-list" component={ExerciseList} />
+		      <Route exact path="/exercise-details" component={ExerciseDetails} />
 		      <Faqs />
 		    </div>
 	    </Router>

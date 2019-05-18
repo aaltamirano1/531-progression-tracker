@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import './Workout.css';
+import './Exercise.css';
 
-export class Workout extends Component{
+export class Exercise extends Component{
 	render(){
 		let orm = this.props.orm;
 		if(this.props.units === "kg."){
@@ -10,7 +10,7 @@ export class Workout extends Component{
 		}
 
 		return (
-			<li className="workout" onClick={()=>this.props.select()}>
+			<li className="exercise" onClick={()=>this.props.select()}>
 				<div>
 					<h3>{this.props.name}</h3>
 					<p>ORM: {Math.round(orm)} {this.props.units}</p>
@@ -25,4 +25,4 @@ const mapStateToProps = state => ({
     units: state.units
 });
 
-export default connect(mapStateToProps)(Workout);
+export default connect(mapStateToProps)(Exercise);

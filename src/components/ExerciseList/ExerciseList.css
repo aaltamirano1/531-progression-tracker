@@ -1,4 +1,4 @@
-.workout-list{
+.exercise-list{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -24,12 +24,12 @@ button.new-exercise:hover{
 	color: red;
 }
 
-p.no-workouts{
+p.no-exercises{
 	margin: 20px;
 }
 
 @media only screen and (max-width: 800px) {
-  .workout-list{
+  .exercise-list{
   	flex-direction: column;
   	margin-top: 150px;
   }

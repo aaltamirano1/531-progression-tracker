@@ -29,12 +29,12 @@ describe('<SubNavbar/>', () => {
     shallow(<SubNavbar />);
   });
 
-  it('Clears selected exerise when All Workouts link is clicked.', () => {
+  it('Clears selected exerise when Back to All link is clicked.', () => {
     const clearSelectedExercise = jest.spyOn(SubNavbar.prototype, 'clearSelectedExercise');
     const dispatch = jest.fn();
     const wrapper = shallow(<SubNavbar dispatch={dispatch}/>);
 
-    wrapper.find('#all-workouts-link').simulate('click');
+    wrapper.find('#all-exercises-link').simulate('click');
     wrapper.update();
     expect(clearSelectedExercise).toHaveBeenCalled();
     expect(dispatch).toHaveBeenCalledWith(mockSetSelectedExerciseAction);

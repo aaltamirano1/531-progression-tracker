@@ -1,4 +1,4 @@
-li.workout{
+li.exercise{
 	background-color: white;
 	border-radius: 3px 3px 0 0;
 	padding: 30px 15px;
@@ -13,30 +13,30 @@ li.workout{
 	color: #f22613;
 }
 
-li.workout:hover{
+li.exercise:hover{
 	border-bottom: 4px solid #3a539b;
 	color: #3a539b;
 }
 
-li.workout div{
+li.exercise div{
 	display: flex;
 	flex-direction: column;
 }
 
-li.workout h3{
+li.exercise h3{
 	font-size: 2em;
 	text-transform: capitalize;
 	color: 	#2b2c2d;
 	margin: 0 0 -10px 0;
 }
 
-li.workout p{
+li.exercise p{
 	margin-bottom: 0;
 	font-weight: bold;
 }
 
 @media only screen and (max-width: 800px) {
-  li.workout{
+  li.exercise{
   	width: 90%;
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 import {putExercise} from '../../actions';
-import {WorkoutDetails} from './WorkoutDetails';
+import {ExerciseDetails} from './ExerciseDetails';
 
 const mockPutExerciseAction = {
     type: 'PUT_EXERCISE'
@@ -17,14 +17,14 @@ jest.mock('../../actions', () => Object.assign({},
     }
 ));
 
-describe('<WorkoutDetails/>', () => {
+describe('<ExerciseDetails/>', () => {
   it('Renders without crashing', () => {
-    shallow(<WorkoutDetails />);
+    shallow(<ExerciseDetails />);
   });
 
   it('Dispatches putExercise action when updateExercise runs.', () => {
     const dispatch = jest.fn();
-    const wrapper = shallow(<WorkoutDetails dispatch={dispatch}/>);
+    const wrapper = shallow(<ExerciseDetails dispatch={dispatch}/>);
     dispatch.mockClear();
 
     const instance = wrapper.instance();

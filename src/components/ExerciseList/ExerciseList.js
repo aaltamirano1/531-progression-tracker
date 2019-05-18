@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import Workout from './Workout';
-import WorkoutForm from './WorkoutForm';
+import Exercise from './Exercise';
+import ExerciseForm from './ExerciseForm';
 import $ from 'jquery';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import './WorkoutList.css';
+import './ExerciseList.css';
 import {setSelectedExercise, postExercise, getNotes, getExercises} from '../../actions';
 
-export class WorkoutList extends Component{
+export class ExerciseList extends Component{
 	newExercise(){
 		$(".modal-background.exercise-form").show();
 	}
@@ -27,18 +27,18 @@ export class WorkoutList extends Component{
 		if(!this.props.authToken){
 			return <Redirect to="/" />;
 		}else if(this.props.selectedExercise){
-			return <Redirect to="/workout-details" />;
+			return <Redirect to="/exercise-details" />;
 		}
 
-		const workoutsHTML = 
+		const exercisesHTML = 
 			this.props.exercises
-			? this.props.exercises.map(workout=>(<Workout key={workout._id} name={workout.name} orm={workout.orm} select={()=>this.selectExercise(workout._id)}/>)) 
-			: <p className="no-workouts"><em>You have added no workouts yet. Please press the button to add one.</em></p>;
+			? this.props.exercises.map(exercise=>(<exercise key={exercise._id} name={exercise.name} orm={exercise.orm} select={()=>this.selectExercise(exercise._id)}/>)) 
+			: <p className="no-exercises"><em>You have added no exercises yet. Please press the button to add one.</em></p>;
 			
 		return (
-			<ul className="workout-list">
-				<li><WorkoutForm title="New Workout" requestHandler={(name, orm) => this.addExercise(name, orm)}/></li>
-				{workoutsHTML}
+			<ul className="exercise-list">
+				<li><ExerciseForm title="New exercise" requestHandler={(name, orm) => this.addExercise(name, orm)}/></li>
+				{exercisesHTML}
 				<li><button className="new-exercise" onClick={()=>this.newExercise()}>+</button></li>
 			</ul>
 		);
@@ -53,4 +53,4 @@ const mapStateToProps = state => ({
     userId: state.userId
 });
 
-export default connect(mapStateToProps)(WorkoutList);
+export default connect(mapStateToProps)(ExerciseList);

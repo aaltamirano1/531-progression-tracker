@@ -1,4 +1,4 @@
-.workout-details-nav{
+.exercise-details-nav{
   position: fixed;
   top: 107px;
   width: 100vw;
@@ -6,14 +6,14 @@
   border-bottom: 1px solid silver;
 }
 
-.workout-details-nav ul{
+.exercise-details-nav ul{
 	display: flex;
 	justify-content: flex-end;
 	margin: 0;
 	padding-right: 20px;
 }
 
-.workout-details-nav li{
+.exercise-details-nav li{
 	margin: 10px;
 	cursor: pointer;
 	color: white;

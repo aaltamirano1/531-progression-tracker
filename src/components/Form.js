@@ -27,7 +27,7 @@ export class Form extends Component{
 
 	render(){
         if(this.props.authToken){
-            return <Redirect to="/workout-list"/>;
+            return <Redirect to="/exercise-list"/>;
         }
 	    return (
           <div className="landing">

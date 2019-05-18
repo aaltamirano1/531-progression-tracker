@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import './WorkoutDetails.css';
+import './ExerciseDetails.css';
 import SubNavbar from './SubNavbar';
 import WeeklySchedule from './WeeklySchedule';
-import WorkoutForm from '../WorkoutList/WorkoutForm';
+import ExerciseForm from '../ExerciseList/ExerciseForm';
 import NotesSection from './NotesSection/NotesSection';
 import {putExercise} from '../../actions';
 
-export class WorkoutDetails extends Component{
+export class ExerciseDetails extends Component{
 	updateExercise(name, orm, id){
 		this.props.dispatch(putExercise({name, orm}, id));
 	}
@@ -17,22 +17,22 @@ export class WorkoutDetails extends Component{
 		if(!this.props.authToken){
 			return <Redirect to="/" />;
 		}else if(!this.props.selected){
-			return <Redirect to="/workout-list" />;
+			return <Redirect to="/exercise-list" />;
 		}
-		const workout = this.props.exercises.filter(exercise=>{
+		const exercise = this.props.exercises.filter(exercise=>{
 			return exercise._id === this.props.selected;
 		})[0];
 		
 		return (
-			<div className="workout-details">
+			<div className="exercise-details">
 				<SubNavbar />
-				<h1>{workout.name}</h1>
-				<WeeklySchedule workoutId={workout._id} orm={workout.orm} week={workout.week}/>
-				<NotesSection notes={workout.notes}/>
-				<WorkoutForm title="Edit Exercise" 
-					nameValue={workout.name} 
-					ormValue={this.props.units==="kg." ? Math.round(workout.orm/2.2046) : workout.orm}
-					idValue={workout._id}
+				<h1>{exercise.name}</h1>
+				<WeeklySchedule exerciseId={exercise._id} orm={exercise.orm} week={exercise.week}/>
+				<NotesSection notes={exercise.notes}/>
+				<exerciseForm title="Edit Exercise" 
+					nameValue={exercise.name} 
+					ormValue={this.props.units==="kg." ? Math.round(exercise.orm/2.2046) : exercise.orm}
+					idValue={exercise._id}
 					requestHandler={(name, orm, id) => this.updateExercise(name, orm, id)}
 				/>
 			</div>
@@ -48,4 +48,4 @@ const mapStateToProps = state => ({
     selected: state.selectedExercise
 });
 
-export default connect(mapStateToProps)(WorkoutDetails);
+export default connect(mapStateToProps)(ExerciseDetails);

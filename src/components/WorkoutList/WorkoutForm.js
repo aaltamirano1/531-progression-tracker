@@ -21,11 +21,17 @@ export class WorkoutForm extends Component{
     onSubmit(e) {
         e.preventDefault();
         const name = this.nameInput.value.trim();
-        const orm = this.ormInput.value.trim();
+
+        let orm = this.ormInput.value.trim();
+        if(this.props.units === "kg."){
+            orm = orm * 2.2046;
+            console.log(orm);
+        }
+
         if (name && orm && this.props.idValue) {
-            this.props.requestHandler(this.nameInput.value, this.ormInput.value, this.props.idValue);
+            this.props.requestHandler(this.nameInput.value, orm, this.props.idValue);
         } else if (name && orm) {
-            this.props.requestHandler(this.nameInput.value, this.ormInput.value);
+            this.props.requestHandler(this.nameInput.value, orm);
         }
         this.closeModal();
     }

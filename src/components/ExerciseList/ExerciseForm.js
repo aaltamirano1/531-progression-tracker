@@ -11,6 +11,7 @@ export class ExerciseForm extends Component{
     }
     closeModal(){
         $(".modal-background.exercise-form").hide();
+        this.setInputValues();
     }
     setInputValues(){
         if(this.props.ormValue && this.props.nameValue){
@@ -31,6 +32,8 @@ export class ExerciseForm extends Component{
             this.props.requestHandler(this.nameInput.value, orm, this.props.idValue);
         } else if (name && orm) {
             this.props.requestHandler(this.nameInput.value, orm);
+            this.nameInput.value = "";
+            this.ormInput.value = "";
         }
         this.closeModal();
     }

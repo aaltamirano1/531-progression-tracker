@@ -1,68 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 5/3/1 Progression Tracker
 
-## Available Scripts
+This is a tool for people running a 5/3/1 progression on a lift or following a 5/3/1 program. Users are asked to provide a name and the most amount of weight they can lift for an exercise they would like to track. This app programmatically creates a 4 week schedule to increase the lift based on a popular schedule/method known as a 5/3/1 progression created by Jim Wendler. Users can also keep notes and reminders for a given exercise and track what week they are on.
 
-In the project directory, you can run:
+## Check It Out
+You can access it [here](https://the-531-progression-tracker.herokuapp.com).  
+If you only want a demo, login with the username <b>demo</b> and the password <b>demopassword</b>.
 
-### `npm start`
+## Technologies Used
+- [Node.js](https://nodejs.org/en/) for package management.
+- [Express](http://expressjs.com/) for managing routes, requests, and responses.
+- [Mongoose](https://mongoosejs.com/) for creating models.
+- [Passport](http://www.passportjs.org/) for setting up local and JWT authentication.
+- [JSON Web Tokens](https://jwt.io/) to protect endpoints by requiring users to log in.
+- [Bcrypt](https://www.npmjs.com/package/bcrypt) to  encrypt passwords and validate them when users log in.
+- [Body-Parser](https://www.npmjs.com/package/body-parser) for parsing json request bodies.
+- jQuery and plain HTML/CSS
+- [Ezyme]https://airbnb.io/enzyme/) for testing components, actions, and reducer.
+- [TravisCI](https://travis-ci.org/) for continuous integration, pushes to heroku if all tests pass.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Screenshots
+![Imgur Image](https://imgur.com/XOETIZ3.jpg).

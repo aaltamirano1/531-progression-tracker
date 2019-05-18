@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import {putNote, deleteNote, getNotes} from '../../../actions';
 import './Note.css';
 
-const ReactDOM = require('react-dom');
-
 export class Note extends Component{
 	constructor(props){
 		super(props);

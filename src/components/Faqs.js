@@ -4,8 +4,8 @@ import './Faqs.css';
 
 export default class Faqs extends Component{
 	closeModal(){
-        $(".modal-background.faqs").hide();
-    }
+    $(".modal-background.faqs").hide();
+  }
 	render(){
 		return (
 			<div className="modal-background faqs">  

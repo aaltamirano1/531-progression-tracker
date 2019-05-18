@@ -9,11 +9,11 @@ const mockSetAuthTokenAction = {
 };
 
 jest.mock('../actions', () => Object.assign({},
-    require.requireActual('../actions'),{
-      setAuthToken: jest.fn().mockImplementation(() => {
-            return mockSetAuthTokenAction;
-      })
-    }
+  require.requireActual('../actions'),{
+    setAuthToken: jest.fn().mockImplementation(() => {
+          return mockSetAuthTokenAction;
+    })
+  }
 ));
 
 const history = {location: {pathname: ""}};

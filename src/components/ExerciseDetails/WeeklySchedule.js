@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import $ from 'jquery';
 import './WeeklySchedule.css';
 import {connect} from 'react-redux';
 import {putExercise} from '../../actions';

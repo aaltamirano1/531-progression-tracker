@@ -26,27 +26,27 @@ export class Form extends Component{
   }
 
 	render(){
-        if(this.props.authToken){
-            return <Redirect to="/exercise-list"/>;
-        }
+      if(this.props.authToken){
+          return <Redirect to="/exercise-list"/>;
+      }
 	    return (
-          <div className="landing">
-              <div className="landing-content">
-              <p>This is a tool for people running a 5/3/1 progression on a lift or following a 5/3/1 program. Now you can stay on track without pulling out your calculator and taking notes!</p>
-              <p style={{"textAlign": "center"}}>Happy lifting.</p>
-              </div>
-              <form onSubmit={this.onSubmit}>
-                <h1>{this.props.title}</h1>
-                <p className="error">{this.props.formErrors}</p>
-                <label htmlFor="username-input">Username:</label>
-                <input type="text" name="username" id="username-input" required ref={input => this.usernameInput = input}/>
-                <br/>
-                <label htmlFor="password-input">Password:</label>
-                <input type="password" name="password" id="password-input" required ref={input => this.passwordInput = input}/>
-                <br/>
-                <button className="red-btn" type="submit">Submit</button>
-              </form>
-          </div>
+        <div className="landing">
+            <div className="landing-content">
+            <p>This is a tool for people running a 5/3/1 progression on a lift or following a 5/3/1 program. Now you can stay on track without pulling out your calculator and taking notes!</p>
+            <p style={{"textAlign": "center"}}>Happy lifting.</p>
+            </div>
+            <form onSubmit={this.onSubmit}>
+              <h1>{this.props.title}</h1>
+              <p className="error">{this.props.formErrors}</p>
+              <label htmlFor="username-input">Username:</label>
+              <input type="text" name="username" id="username-input" required ref={input => this.usernameInput = input}/>
+              <br/>
+              <label htmlFor="password-input">Password:</label>
+              <input type="password" name="password" id="password-input" required ref={input => this.passwordInput = input}/>
+              <br/>
+              <button className="red-btn" type="submit">Submit</button>
+            </form>
+        </div>
 		);
 	}
 

@@ -22,7 +22,7 @@ export class NoteForm extends Component{
 	  return (
       <div className="modal-background note-form">  
         <div className="modal">
-          <form onSubmit={this.onSubmit}>
+          <form className="modal-form" onSubmit={this.onSubmit}>
             <p className="close-modal" onClick={()=>this.closeModal()}><i className="fas fa-times"></i></p>
             <h1>New Note</h1>
             <p className="error">{this.props.formErrors}</p>

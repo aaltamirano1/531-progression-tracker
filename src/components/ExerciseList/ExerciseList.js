@@ -32,7 +32,7 @@ export class ExerciseList extends Component{
 
 		const exercisesHTML = 
 			this.props.exercises
-			? this.props.exercises.map(exercise=>(<exercise key={exercise._id} name={exercise.name} orm={exercise.orm} select={()=>this.selectExercise(exercise._id)}/>)) 
+			? this.props.exercises.map(exercise=>(<Exercise key={exercise._id} name={exercise.name} orm={exercise.orm} select={()=>this.selectExercise(exercise._id)}/>)) 
 			: <p className="no-exercises"><em>You have added no exercises yet. Please press the button to add one.</em></p>;
 			
 		return (

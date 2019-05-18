@@ -47,7 +47,7 @@ export class ExerciseForm extends Component{
 	    return (
           <div className="modal-background exercise-form">  
               <div className="modal">
-                  <form className="exercise-form" onSubmit={this.onSubmit}>
+                  <form className="modal-form" onSubmit={this.onSubmit}>
                     <p className="close-modal" onClick={()=>this.closeModal()}><i className="fas fa-times"></i></p>
                     <h1>{this.props.title}</h1>
                     <p className="error">{this.props.formErrors}</p>

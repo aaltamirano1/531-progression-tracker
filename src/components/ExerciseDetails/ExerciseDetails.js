@@ -29,9 +29,9 @@ export class ExerciseDetails extends Component{
 				<h1>{exercise.name}</h1>
 				<WeeklySchedule exerciseId={exercise._id} orm={exercise.orm} week={exercise.week}/>
 				<NotesSection notes={exercise.notes}/>
-				<exerciseForm title="Edit Exercise" 
+				<ExerciseForm title="Edit Exercise" 
 					nameValue={exercise.name} 
-					ormValue={this.props.units==="kg." ? Math.round(exercise.orm/2.2046) : exercise.orm}
+					ormValue={this.props.units==="kg." ? Math.round(exercise.orm/2.2046) : Math.round(exercise.orm)}
 					idValue={exercise._id}
 					requestHandler={(name, orm, id) => this.updateExercise(name, orm, id)}
 				/>

@@ -10,7 +10,7 @@ export class NoteForm extends Component{
   }
   closeModal(){
     $(".modal-background.note-form").hide();
-    this.noteInput.value = "";
+    $("#note-input").val("");
   }
   onSubmit(e) {
     e.preventDefault();

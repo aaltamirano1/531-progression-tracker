@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './NoteFrom.css';
 import {connect} from 'react-redux';
 import $ from 'jquery';
 import {postNote} from '../../../actions';

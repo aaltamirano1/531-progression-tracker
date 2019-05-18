@@ -1,0 +1,5 @@
+@media only screen and (max-width: 800px) {
+  #note-input{
+  	max-width: 300px;
+  }
+}

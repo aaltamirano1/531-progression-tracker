@@ -7,8 +7,7 @@ env:
 - CI=true
 deploy:
   provider: heroku
-  api_key:
-    secure: dX1Ce/P+UrcoHIXUaM/n2HeC6hB+wOIfepooWotr9Rm01MmyXyfn7hO8PE8na04CYh2yUVn+h68RITNc0bMlqR/zeMJ9nO/2V31QT9pUzA5t35Ulu1O2kWUIhPom1GN4QY9PIaUxa3ZCzxGOUy8g7xMzAU4jGYqpBPdUmuUNNR/mNn4FeWOjjGlYOTzrW0mNqBphnLpl8Sj8RFsKY+39C6Wfca2PQZwElIhS1FSHM4iMkal02HPX3kJWpRVI/1Hc1lOZTDX7h1MchLO9JP0YAllK1abXMoo+W0265Vmf8Szl1oyOXzv12nABZ4n9VhzP5F6vFcLkqHi5HMcFJAJ93/FmUmmh0UvEgtnC1ji81iACZjSrh1hIouogxPlzg7V2S9qW69vPIMJtc24Csg+z9pni0Ns/rO21UI5lBT/y/vJbkt7vj6GVzMXJINrJUbihvToak4hMPczgmgtmG5cn0LrF9MUffV43yKLwahE0HD2GX/CzuZHdULK41jbg/AZ6Z3hLx/rCc0WrXJf0avUKr82cieXFTOXfXa/ev9tEAFbn0FqjV367svdjhoTc3X/ITbgdIq4H//xgYgPd0SqPq+6OcHJwOg6xCrSO5IXaRWtw74usq3zVEqhNlR13LqwsAXTIMdRoDNzqa2c0v5sK+BoAKaiSZ2yGBYiVbIFmT4A=
+  api_key: 2abf1fde-0b6d-49b0-a8aa-c5916f05c0e8
   app: the-531-progression-tracker
   on:
     repo: aaltamirano1/531-progression-tracker

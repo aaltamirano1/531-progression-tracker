@@ -15,7 +15,7 @@ If you only want a demo, login with the username <b>demo</b> and the password <b
 - [Bcrypt](https://www.npmjs.com/package/bcrypt) to  encrypt passwords and validate them when users log in.
 - [Body-Parser](https://www.npmjs.com/package/body-parser) for parsing json request bodies.
 - jQuery and plain HTML/CSS
-- [Ezyme]https://airbnb.io/enzyme/) for testing components, actions, and reducer.
+- [Enzyme]https://airbnb.io/enzyme/) for testing components, actions, and reducer.
 - [TravisCI](https://travis-ci.org/) for continuous integration, pushes to heroku if all tests pass.
 
 ## Screenshots

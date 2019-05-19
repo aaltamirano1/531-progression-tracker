@@ -11,7 +11,7 @@ If you only want a demo, login with the username <b>demo</b> and the password <b
 - [React Redux](https://react-redux.js.org/) to link React components to the Redux store.
 - [React Router DOM](https://www.npmjs.com/package/react-router-dom) to render different components depending on which URL is visited.
 - [Redux Thunk](https://github.com/reduxjs/redux-thunk) to write async logic that interacts with the store.
-- [Enzyme]https://airbnb.io/enzyme/) for testing components, actions, and reducer.
+- [Enzyme](https://airbnb.io/enzyme/) for testing components, actions, and reducer.
 - [TravisCI](https://travis-ci.org/) for continuous integration, pushes to heroku if all tests pass.
 
 ### Server Side

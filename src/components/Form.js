@@ -19,7 +19,7 @@ export class Form extends Component{
       }
       this.usernameInput.value = '';
       this.passwordInput.value = '';
-      this.props.dispatch(setFormErrors("");
+      this.props.dispatch(setFormErrors(""));
   }
 
   componentDidMount(){

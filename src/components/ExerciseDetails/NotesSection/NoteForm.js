@@ -28,7 +28,7 @@ export class NoteForm extends Component{
             <p className="close-modal" onClick={()=>this.closeModal()}><i className="fas fa-times"></i></p>
             <h1>New Note</h1>
             <p className="error">{this.props.formErrors}</p>
-            <textarea name="note" id="note-input" rows="4" cols="50" required ref={input => this.noteInput = input}></textarea>
+            <textarea name="note" id="new-note-input" rows="4" cols="50" required ref={input => this.noteInput = input}></textarea>
             <button className="red-btn" type="submit" style={{"marginTop":"10px"}}>Submit</button>
           </form>
         </div>

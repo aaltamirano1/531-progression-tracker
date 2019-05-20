@@ -23,7 +23,7 @@ If you only want a demo, login with the username <b>demo</b> and the password <b
 - [Bcrypt](https://www.npmjs.com/package/bcrypt) to encrypt passwords and validate them when users log in.
 - [Body-Parser](https://www.npmjs.com/package/body-parser) for parsing json request bodies.
 - [Chai](https://www.chaijs.com/) and [Mocha](https://mochajs.org/) for testing requests to endpoints.
-- [Faker](https://github.com/marak/Faker.js/) to seed test databases fake user and journal entries.
+- [Faker](https://github.com/marak/Faker.js/) to seed test databases with fake users and fake exercises and notes.
 - [TravisCI](https://travis-ci.org/) for continuous integration, pushes to heroku if all tests pass.
 
 Check out the back end [here](https://github.com/aaltamirano1/531-progression-tracker-backend).

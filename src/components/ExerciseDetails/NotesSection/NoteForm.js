@@ -17,7 +17,7 @@ export class NoteForm extends Component{
     e.preventDefault();
     const note = this.noteInput.value.trim();
     this.props.dispatch(postNote(note, this.props.selected));
-
+    $("#note-input").val("");
     this.closeModal();
   }
 	render(){

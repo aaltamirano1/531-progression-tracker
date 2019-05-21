@@ -18,9 +18,9 @@ export default class NotesSection extends Component{
 					</div>
 					<button className="new-note" onClick={()=>this.newNote()}>+</button>		
 				</div>
-				{this.props.notes.length>0 ? 
-					<Notes notes={this.props.notes}/> :
-					<p id="no-notes" style={{"marginTop": "-10px"}}><em>This exercise has no notes yet.</em></p>
+				{!this.props.notes || this.props.notes.length===0 ? 
+					<p id="no-notes" style={{"marginTop": "-10px"}}><em>This exercise has no notes yet.</em></p> :
+					<Notes notes={this.props.notes}/> 
 				}
 				<NoteForm />
 			</div>

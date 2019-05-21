@@ -24,3 +24,24 @@
 	text-transform: uppercase;
 	font-size: .9em;
 }
+
+@media only screen and (max-width: 800px) {
+	.exercise-details-nav{
+		margin-top: 30px;
+	}
+	.exercise-details-nav ul{
+		padding: 0;
+	}
+	.exercise-details-nav li{
+		display: flex;
+		align-items: center;
+	}
+	.exercise-details-nav li p{
+		text-align: center;
+		margin: 0;
+	}
+
+	.exercise-details-nav li i{
+		margin: 2px;
+	}
+}

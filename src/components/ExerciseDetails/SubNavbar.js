@@ -25,10 +25,10 @@ export class SubNavbar extends Component{
 				<nav className="exercise-details-nav">
 					<ul>
 						<li id="all-exercises-link" onClick={()=>this.clearSelectedExercise()}>
-							<i className="fas fa-arrow-left"></i> Back to All
+							<i className="fas fa-arrow-left"></i> <p>Back to All</p>
 						</li>
-						<li id="edit-exercise-link" onClick={()=>this.editExercise()}>Edit</li>
-						<li id="toggle-units-link" onClick={()=>this.updateUnits()}>Unit: {this.props.units}</li>
+						<li id="edit-exercise-link" onClick={()=>this.editExercise()}><p>Edit</p></li>
+						<li id="toggle-units-link" onClick={()=>this.updateUnits()}><p>Unit: {this.props.units}</p></li>
 					</ul>
 				</nav>
 		);

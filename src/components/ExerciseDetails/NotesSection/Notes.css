@@ -12,6 +12,10 @@
 	font-weight: bold;
 }
 
+.notes li p{
+	margin: 0;
+}
+
 .notes li .notes-buttons{
 	display: flex;
 	justify-content: flex-end;

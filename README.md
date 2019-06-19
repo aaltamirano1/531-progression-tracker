@@ -3,7 +3,7 @@
 This is a tool for people running a 5/3/1 progression on a lift or following a 5/3/1 program. Users are asked to provide a name and the most amount of weight they can lift for an exercise they would like to track. This app programmatically creates a 4 week schedule to increase the amount of weight they can lift based on a popular schedule/method known as a 5/3/1 progression created by Jim Wendler. Users can also keep notes and reminders for a given exercise and track what week they are on.
 
 ## You can access it [here](https://the-531-progression-tracker.herokuapp.com).  
-If you only want a demo, login with the username <b>demo</b> and the password <b>demopassword</b>.
+If you only want a demo, login with the username <b>demo</b> and the password <b>demopassword</b>, or press the demo button at the top.
 
 ## Technologies Used
 ### Client Side

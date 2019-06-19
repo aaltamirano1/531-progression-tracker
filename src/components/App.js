@@ -24,7 +24,7 @@ export class App extends React.Component{
 	  return (
 	  	<Router>
 		    <div className="App">
-		      <Navbar/>
+		      <Navbar onDemoLogin={()=>{this.getAuthToken("demo", "demopassword")}}/>
 		      <Route exact path="/sign-up" render={props=>(<Form 
 		      	title="Sign Up" 
 		      	onAdd={(username, password) => this.addUser(username, password)}

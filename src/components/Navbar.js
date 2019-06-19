@@ -14,25 +14,36 @@ export class Navbar extends Component{
 	}
 	render(){
 		const path = this.props.history.location.pathname;
-		let link = "";
+		let links = "";
 		switch(path){
 			case "/":
-				link= (<li><Link target="_self" to="/sign-up">Sign Up</Link></li>);
+				links= 
+				(<ul>
+					<li onClick={()=>this.showFaqs()}>FAQs</li>
+					<li><Link target="_self" to="/sign-up">Sign Up</Link></li>
+					<li className="demo" onClick={()=>{this.props.onDemoLogin()}}>Demo</li>
+				</ul>);
 				break;
 			case "/sign-up":
-				link= (<li><Link target="_self" to="/">Log In</Link></li>);
+				links=
+				(<ul>
+					<li onClick={()=>this.showFaqs()}>FAQs</li>
+					<li><Link target="_self" to="/">Log In</Link></li>
+					<li className="demo" onClick={()=>{this.props.onDemoLogin()}}>Demo</li>
+				</ul>);
 				break;
 			default:
-				link= ( <li onClick={()=>this.setAuthToken("")}>Log Out</li>);
+				links= 
+				(<ul>
+					<li onClick={()=>this.showFaqs()}>FAQs</li>
+					<li onClick={()=>this.setAuthToken("")}>Log Out</li>
+				</ul>);
 		}
 
 		return (
 			<nav className="nav">
 				<img src={process.env.PUBLIC_URL + '/logo.png'} alt="Logo" />
-				<ul>
-					<li onClick={()=>this.showFaqs()}>FAQs</li>
-					{link}				
-				</ul>
+				{links}
 			</nav>
 		);
 	}

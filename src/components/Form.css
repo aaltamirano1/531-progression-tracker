@@ -48,6 +48,10 @@ form h1{
 	font-family: 'Roboto Condensed', sans-serif;
 }
 
+form hr{
+	
+}
+
 form input{
 	width: 250px;
 	border: none;
